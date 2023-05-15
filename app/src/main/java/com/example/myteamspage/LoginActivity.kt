@@ -26,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
                 val password = passwordTemp
             }
 
+            println("XD")
+
         }
 
     }
