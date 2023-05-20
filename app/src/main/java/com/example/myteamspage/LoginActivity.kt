@@ -1,5 +1,6 @@
 package com.example.myteamspage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -24,6 +25,9 @@ class LoginActivity : AppCompatActivity() {
             }
             else  {
                 val password = passwordTemp
+                // Start Schedule Game Activitie
+                val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+                startActivity(intent)
             }
 
             println("XD")
