@@ -16,19 +16,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="SCHEDULE"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="17sp"
-        app:layout_constraintTop_toBottomOf="@+id/Kickoff"
         android:id="@+id/SCHEDULE"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="4dp"
         android:drawableRight="@drawable/baseline_search_24"
-        android:drawableRight="@drawable/baseline_search_24"/>
+        android:hint="SCHEDULE"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/ICON"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
+
+    <TextView
+        android:id="@+id/ICON"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:drawableLeft="@drawable/notification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
 
     <CalendarView
         android:layout_marginLeft="15dp"

@@ -17,17 +17,25 @@ class LoginActivity : AppCompatActivity() {
         val passwordEt = findViewById<EditText>(R.id.passwordEt)
 
         loginBtn.setOnClickListener {
-            val email = emailEt.text.toString()
+            val emailTemp = emailEt.text.toString()
             val passwordTemp = passwordEt.text.toString()
+
 
             if(passwordTemp.length < 6) {
                 Toast.makeText(applicationContext,"PASSWORD TOO SHORT!",Toast.LENGTH_LONG).show()
             }
             else  {
                 val password = passwordTemp
-                // Start Schedule Game Activitie
-                val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
-                startActivity(intent)
+                if(emailTemp.matches(Regex("/^\\S+@\\S+\\.\\S+\$/")))
+                {
+                    val email = emailTemp
+                    // Start Schedule Game Activitie
+                    val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+                    startActivity(intent)
+                }
+                else{
+                    Toast.makeText(applicationContext,"Invalid email!",Toast.LENGTH_LONG).show()
+                }
             }
 
             println("XD")
