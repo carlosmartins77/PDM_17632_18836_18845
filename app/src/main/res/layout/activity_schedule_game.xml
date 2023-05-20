@@ -19,28 +19,33 @@
 
     <TextView
         android:id="@+id/SCHEDULE"
-        android:layout_width="350dp"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="4dp"
-        android:drawableRight="@drawable/baseline_search_24"
+        android:layout_marginTop="15dp"
         android:hint="SCHEDULE"
         android:textSize="17sp"
-        app:layout_constraintEnd_toStartOf="@+id/ICON"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
 
-    <TextView
-        android:id="@+id/ICON"
-        android:layout_width="30dp"
+    <LinearLayout
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:drawableLeft="@drawable/notification"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
+        app:layout_constraintBottom_toBottomOf="@+id/SCHEDULE"
+        app:layout_constraintStart_toEndOf="@+id/SCHEDULE">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_24" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification" />
+
+    </LinearLayout>
+
 
     <CalendarView
         android:layout_marginLeft="15dp"

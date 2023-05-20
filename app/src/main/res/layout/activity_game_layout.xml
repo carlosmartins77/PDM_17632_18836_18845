@@ -16,6 +16,7 @@
         android:id="@+id/layout_item_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/layout_item_team1_id"
         app:layout_constraintEnd_toStartOf="@+id/layout_item_team2_id"
         app:layout_constraintStart_toEndOf="@id/layout_item_team1_id"
