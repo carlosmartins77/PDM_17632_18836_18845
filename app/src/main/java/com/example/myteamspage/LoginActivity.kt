@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import com.example.myteamspage.Entities.LoginDto
-import com.example.myteamspage.Entities.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +22,18 @@ class LoginActivity : AppCompatActivity() {
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val emailEt = findViewById<EditText>(R.id.emailEt)
         val passwordEt = findViewById<EditText>(R.id.passwordEt)
+        val forgotPasswordTV = findViewById<TextView>(R.id.forgotPasswordTV)
 
+        //region forgot password
+
+        forgotPasswordTV.setOnClickListener{
+            val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
+        //endregion
+
+        //region Login
         loginBtn.setOnClickListener {
             val emailTemp = emailEt.text.toString()
             val passwordTemp = passwordEt.text.toString()
@@ -40,9 +50,6 @@ class LoginActivity : AppCompatActivity() {
                 //    Log.d("Teste","teste")
                // }
                 //endregion
-               // else{
-               //    Toast.makeText(applicationContext,"Invalid email!",Toast.LENGTH_LONG).show()
-               // }
 
                 val BASE_URL = "http://192.168.1.254:3000/"
 
@@ -51,15 +58,23 @@ class LoginActivity : AppCompatActivity() {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 val service = retrofit.create(UserService::class.java)
-                val loginDto = LoginDto(emailTemp, passwordTemp)
-                val call = service.loginUser(loginDto)
+
+                val requestBody = mapOf(
+                    "email" to emailTemp,
+                    "password" to passwordTemp
+                )
+                val call = service.loginUser(requestBody)
 
                 call.enqueue(object : Callback<Map<String, String>> {
                     override fun onResponse(call: Call<Map<String, String>>, response: Response<Map<String, String>>) {
                         if (response.isSuccessful) {
-                            val token = response.body()?.get("token")
-                            Log.d("tokennossapi", token.toString())
-                            // Handle the token as needed
+                            //val token = response.body()?.get("token")
+
+                            //region Start Schedule Game Activity
+                            val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+                            startActivity(intent)
+                            //endregion
+
                             Toast.makeText(applicationContext, "Login successful", Toast.LENGTH_LONG).show()
                         } else {
                             Log.d("responserequest", response.toString())
@@ -75,16 +90,12 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-                //region Start Schedule Game Activity
-                //val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
-                //startActivity(intent)
 
-                //endregion
             }
 
             println("XD")
 
         }
-
+        //endregion
     }
 }
