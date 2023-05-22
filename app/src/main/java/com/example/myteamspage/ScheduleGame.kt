@@ -1,5 +1,6 @@
 package com.example.myteamspage
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.icu.text.SimpleDateFormat
@@ -32,6 +33,10 @@ class ScheduleGame : AppCompatActivity() {
 
         btn_schedule_game.setOnClickListener {
             Toast.makeText(applicationContext, "Selected date: $date", Toast.LENGTH_SHORT).show()
+            // Start Schedule Game Screen 2 Activity
+            val intent = Intent(this@ScheduleGame, ScheduleGameScreen2::class.java)
+            intent.putExtra("calendar_date", date);
+            startActivity(intent)
         }
 
 

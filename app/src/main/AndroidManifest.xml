@@ -19,6 +19,9 @@
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
+            android:name=".ScheduleGameScreen2"
+            android:exported="false" />
+        <activity
             android:name=".ScheduleGame"
             android:exported="false" />
         <activity

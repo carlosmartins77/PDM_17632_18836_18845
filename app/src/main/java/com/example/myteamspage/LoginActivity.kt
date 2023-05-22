@@ -38,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
             val emailTemp = emailEt.text.toString()
             val passwordTemp = passwordEt.text.toString()
 
+            val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+            startActivity(intent)
 
             if(passwordTemp.length < 6) {
                 Toast.makeText(applicationContext,"PASSWORD TOO SHORT!",Toast.LENGTH_LONG).show()
