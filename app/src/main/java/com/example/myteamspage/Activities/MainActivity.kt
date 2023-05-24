@@ -1,4 +1,4 @@
-package com.example.myteamspage
+package com.example.myteamspage.Activities
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.widget.ListView
 import android.widget.Toast
 import com.example.myteamspage.Entities.Team
 import com.example.myteamspage.Adapters.MyTeamsPageAdapter
+import com.example.myteamspage.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

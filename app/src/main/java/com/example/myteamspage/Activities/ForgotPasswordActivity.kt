@@ -1,4 +1,4 @@
-package com.example.myteamspage
+package com.example.myteamspage.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,8 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Button
 import android.widget.Toast
+import com.example.myteamspage.R
+import com.example.myteamspage.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

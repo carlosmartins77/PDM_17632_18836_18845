@@ -1,4 +1,4 @@
-package com.example.myteamspage
+package com.example.myteamspage.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.myteamspage.R
+import com.example.myteamspage.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,9 +39,6 @@ class LoginActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
             val emailTemp = emailEt.text.toString()
             val passwordTemp = passwordEt.text.toString()
-
-            val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
-            startActivity(intent)
 
             if(passwordTemp.length < 6) {
                 Toast.makeText(applicationContext,"PASSWORD TOO SHORT!",Toast.LENGTH_LONG).show()

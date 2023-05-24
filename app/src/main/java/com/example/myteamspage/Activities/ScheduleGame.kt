@@ -1,9 +1,6 @@
-package com.example.myteamspage
+package com.example.myteamspage.Activities
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +8,7 @@ import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Adapters.MyAdapterRec
-import java.util.*
+import com.example.myteamspage.R
 
 class ScheduleGame : AppCompatActivity() {
     private var date: String? = null
