@@ -16,6 +16,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".CompleteYourProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Create_an_account"
+            android:exported="false" />
+        <activity
+            android:name=".create_your_team_register"
+            android:exported="false" />
+        <activity
+            android:name=".Logo_KickOff"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity

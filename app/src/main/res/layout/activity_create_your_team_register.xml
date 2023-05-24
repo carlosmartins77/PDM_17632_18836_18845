@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".create_your_team_register">
+
+    <LinearLayout
+        android:id="@+id/create_your_team_register_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:paddingRight="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/create_your_team_register_arrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <ImageView
+            android:id="@+id/create_your_team_register_rectangle"
+            android:layout_width="80dp"
+            android:layout_height="14dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/button_border"
+            android:src="@drawable/baseline_rectangle_24" />
+
+        <ImageView
+            android:id="@+id/create_your_team_register_rectangle2"
+            android:layout_width="200dp"
+            android:layout_height="14dp"
+            android:background="@drawable/button_border_25_ptc"
+            android:src="@drawable/baseline_rectangle_24" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/create_your_team_register_title1"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:hint="Create your Team"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_header" />
+
+    <TextView
+        android:id="@+id/create_your_team_register_title2"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Create your dream Team"
+        android:textSize="19dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_title1" />
+
+
+    <ImageView
+        android:id="@+id/create_your_team_register_image"
+        android:layout_marginLeft="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/create_team"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_title2" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_image">
+
+        <Button
+            android:id="@+id/create_your_team_register_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_border_already_have_an_account"
+            android:text="Skip"
+            />
+
+        <Button
+            android:id="@+id/create_your_team_register_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="3"
+            android:textColor="@color/white"
+            android:text="Continue"
+            android:background="@drawable/button_border_get_started" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

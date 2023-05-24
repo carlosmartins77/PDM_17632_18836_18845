@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Logo_KickOff">
+
+    <ImageView
+        android:layout_marginLeft="80dp"
+        android:id="@+id/logo_kickoff_image"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/logo_kickoff_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Welcome🖐"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_kickoff_image"></TextView>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:id="@+id/logo_kickoff_dots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_kickoff_welcome">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_border"
+            android:src="@drawable/baseline_rectangle_24" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_marginRight="2dp"
+            android:layout_height="18dp"
+            android:src="@drawable/baseline_circle_24" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/baseline_circle_24" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/baseline_circle_24" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="18dp"
+            android:src="@drawable/baseline_circle_24" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/logo_kick_off_button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Get Started"
+        android:textColor="@color/white"
+        android:background="@drawable/button_border_get_started"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo_kickoff_dots"/>
+
+
+    <Button
+        android:id="@+id/logo_kick_off_button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/white"
+        android:text="I Already Have an Account"
+        android:background="@drawable/button_border_already_have_an_account"
+        android:src="@drawable/button_border_get_started"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/logo_kick_off_button1"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".CompleteYourProfile">
 
     <LinearLayout
         android:id="@+id/register_header"
@@ -42,12 +42,13 @@
 
 
     <TextView
+        android:layout_marginRight="50dp"
         android:id="@+id/createAccTv"
-        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Create an account"
+        android:text="Complete Your Profile"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_header"></TextView>
@@ -56,7 +57,8 @@
         android:id="@+id/instructionTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter email and password!"
+        android:layout_marginRight="25dp"
+        android:text="Complete you profile now or you can skip and fill it out later"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/createAccTv"
         app:layout_constraintStart_toStartOf="@id/createAccTv"
@@ -64,64 +66,91 @@
     </TextView>
 
     <TextView
-        android:id="@+id/registerEmailTv"
+        android:id="@+id/register_full_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="Full Name"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/instructionTv"
         app:layout_constraintStart_toStartOf="@id/instructionTv"
-        android:layout_marginTop="50sp">
+        android:layout_marginTop="20sp"
+        >
     </TextView>
 
     <EditText
-        android:id="@+id/registerEmailEt"
+        android:id="@+id/register_full_name_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerEmailTv"
-        app:layout_constraintStart_toStartOf="@id/registerEmailTv">
+        app:layout_constraintTop_toBottomOf="@id/register_full_name"
+        app:layout_constraintStart_toStartOf="@id/register_full_name"
+        android:contentDescription="Full Name input field">
     </EditText>
 
     <TextView
-        android:id="@+id/registerPasswordTv"
+        android:id="@+id/register_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="Phone Number"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerEmailEt"
-        app:layout_constraintStart_toStartOf="@id/registerEmailEt"
-        android:layout_marginTop="50sp">
+        app:layout_constraintTop_toBottomOf="@id/register_full_name_field"
+        app:layout_constraintStart_toStartOf="@id/register_full_name_field"
+        android:layout_marginTop="20sp">
     </TextView>
 
     <EditText
-        android:id="@+id/registerPasswordEt"
+        android:id="@+id/register_phone_number_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerPasswordTv"
-        app:layout_constraintStart_toStartOf="@id/registerPasswordTv">
+        app:layout_constraintTop_toBottomOf="@id/register_phone_number"
+        app:layout_constraintStart_toStartOf="@id/register_phone_number"
+        android:contentDescription="Phone Number input field">
     </EditText>
 
     <TextView
-        android:id="@+id/registerConfirmPasswordTv"
-        android:layout_marginTop="50sp"
+        android:id="@+id/register_date_of_birth"
+        android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm Password"
+        android:text="Date of Birth"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerPasswordEt"
-        app:layout_constraintStart_toStartOf="@id/registerPasswordEt">
+        app:layout_constraintTop_toBottomOf="@id/register_phone_number_field"
+        app:layout_constraintStart_toStartOf="@id/register_phone_number_field">
     </TextView>
 
     <EditText
-        android:id="@+id/registerConfirmPasswordEt"
+        android:id="@+id/register_date_of_birth_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordTv"
-        app:layout_constraintStart_toStartOf="@id/registerConfirmPasswordTv">
+        android:contentDescription="Date of birth input field"
+        app:layout_constraintTop_toBottomOf="@id/register_date_of_birth"
+        app:layout_constraintStart_toStartOf="@id/register_date_of_birth">
     </EditText>
+
+
+    <TextView
+        android:id="@+id/register_country"
+        android:layout_marginTop="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Country"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/register_date_of_birth_field"
+        app:layout_constraintStart_toStartOf="@id/register_date_of_birth_field">
+    </TextView>
+
+    <EditText
+        android:id="@+id/register_country_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:contentDescription="Country input field"
+        app:layout_constraintTop_toBottomOf="@id/register_country"
+        app:layout_constraintStart_toStartOf="@id/register_country">
+    </EditText>
+
 
     <Button
         android:id="@+id/registerContinueBtn"
@@ -129,10 +158,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordEt"
+        app:layout_constraintTop_toBottomOf="@id/register_country_field"
         android:layout_marginTop="20dp"
         android:text="Continue"
         android:background="@drawable/button_border_get_started">
+
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
