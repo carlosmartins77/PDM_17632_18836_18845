@@ -88,14 +88,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
                     }
                 })
-
-
-
-
             }
-
-            println("XD")
-
         }
         //endregion
     }

@@ -19,7 +19,7 @@
             android:name=".Activities.CompleteYourProfile"
             android:exported="false" />
         <activity
-            android:name=".Activities.create_your_team_register"
+            android:name=".Activities.Create_your_team_register"
             android:exported="false">
         </activity>
         <activity

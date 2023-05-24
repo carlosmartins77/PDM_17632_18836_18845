@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.create_your_team_register">
+    tools:context=".Activities.Create_your_team_register">
 
     <LinearLayout
         android:id="@+id/create_your_team_register_header"
@@ -53,6 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_header" />
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/create_your_team_register_title2"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
@@ -76,24 +77,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_margin="40dp"
-        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_image">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/create_your_team_register_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
             android:layout_marginRight="10dp"
-            android:textColor="@color/white"
+            android:layout_weight="3"
             android:background="@drawable/button_border_already_have_an_account"
             android:text="Skip"
-            />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/create_your_team_register_button2"
@@ -101,9 +100,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="3"
-            android:textColor="@color/white"
+            android:background="@drawable/button_border_get_started"
             android:text="Continue"
-            android:background="@drawable/button_border_get_started" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
