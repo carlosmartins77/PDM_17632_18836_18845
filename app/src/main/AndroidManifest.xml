@@ -16,17 +16,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ComposeTweet"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.SetNotifications"
+            android:exported="false" />
+        <activity
             android:name=".Activities.CompleteYourProfile"
             android:exported="false" />
         <activity
             android:name=".Activities.Create_your_team_register"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Activities.Logo_KickOff"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,8 +56,7 @@
             android:exported="false" />
         <activity
             android:name=".Activities.HomePageActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>

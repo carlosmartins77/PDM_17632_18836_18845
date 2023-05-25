@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ComposeTweet">
+
+    <TextView
+        android:id="@+id/compose_tweet_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="KICKOFF"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/compose_tweet_header"
+        app:layout_constraintTop_toBottomOf="@+id/compose_tweet_logo">
+
+        <ImageView
+            android:id="@+id/compose_tweet_arrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src ="@drawable/baseline_arrow_back_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/compose_tweet_publish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border_get_started"
+            android:textColor="@color/white"
+            android:hint="PUBLISH"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

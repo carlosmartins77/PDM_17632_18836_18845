@@ -38,8 +38,9 @@ class Create_your_team_register : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // A defenir....
         continueBtn.setOnClickListener {
+            val intent = Intent(this@Create_your_team_register, SetNotifications::class.java)
+            startActivity(intent)
         }
     }
 }
