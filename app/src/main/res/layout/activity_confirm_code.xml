@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ConfirmCode">
+
+    <TextView
+        android:id="@+id/addCodeEmailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="96dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:text="You’ve got mail 📩"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/messageAddCodeEmail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="150dp"
+        android:textColor="@color/black"
+        android:text="We have sent the OTP verification code to your email address. Check your email and enter the code below."
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <EditText
+        android:id="@+id/codeEmailNumber"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:inputType="text|number"
+        android:textSize="20sp"
+        android:layout_marginTop="280dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </EditText>
+
+    <Button
+        android:id="@+id/continueAddCodeBtn"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/button_border_get_started"
+        android:textColor="@color/white"
+        android:text="Confirm">
+    </Button>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,7 +33,7 @@
 
     <EditText
         android:id="@+id/emailEt"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/emailTv"
         app:layout_constraintStart_toStartOf="@id/emailTv"
@@ -52,16 +52,22 @@
         android:layout_marginTop="40sp">
     </TextView>
 
-    <EditText
-        android:id="@+id/passwordEt"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordContainer"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1sp"
+        app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/passwordTv"
-        app:layout_constraintStart_toStartOf="@id/passwordTv"
-        android:inputType="textPassword"
-        android:textSize="20sp">
-
-    </EditText>
+        app:layout_constraintStart_toStartOf="@id/passwordTv">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/forgotPasswordTV"
@@ -71,10 +77,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="Forgot password?"
         android:layout_marginTop="20sp"
-        app:layout_constraintTop_toBottomOf="@id/passwordEt"
+        app:layout_constraintTop_toBottomOf="@id/passwordContainer"
         android:textSize="20sp"
-        android:textStyle="bold"
-        ></TextView>
+        android:textStyle="bold">
+    </TextView>
 
     <Button
         android:id="@+id/loginBtn"

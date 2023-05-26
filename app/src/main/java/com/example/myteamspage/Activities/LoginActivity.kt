@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.myteamspage.R
 import com.example.myteamspage.UserService
+import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,19 +18,23 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var passwordEditText: TextInputEditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        passwordEditText = findViewById(R.id.passwordText)
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val emailEt = findViewById<EditText>(R.id.emailEt)
-        val passwordEt = findViewById<EditText>(R.id.passwordEt)
         val forgotPasswordTV = findViewById<TextView>(R.id.forgotPasswordTV)
 
         //region forgot password
 
         forgotPasswordTV.setOnClickListener{
-            val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+            //val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
+            val intent = Intent(this@LoginActivity, ForgotPWD::class.java)
             startActivity(intent)
         }
 
@@ -38,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
         //region Login
         loginBtn.setOnClickListener {
             val emailTemp = emailEt.text.toString()
-            val passwordTemp = passwordEt.text.toString()
+            val passwordTemp = passwordEditText.text.toString()
 
             if(passwordTemp.length < 6) {
                 Toast.makeText(applicationContext,"PASSWORD TOO SHORT!",Toast.LENGTH_LONG).show()
