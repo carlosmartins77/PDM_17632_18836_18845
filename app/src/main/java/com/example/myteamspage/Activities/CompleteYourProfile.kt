@@ -2,12 +2,14 @@ package com.example.myteamspage.Activities
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import com.example.myteamspage.R
+import com.example.myteamspage.Services.UserServiceFunctions
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
@@ -17,18 +19,17 @@ class CompleteYourProfile : AppCompatActivity() {
         setContentView(R.layout.activity_complete_your_profile)
 
         val progressBar = findViewById<ProgressBar>(R.id.complete_your_profile_progress_bar)
-        val continueBtn = findViewById<Button>(R.id.complete_your_profile_ContinueBtn)
-        val editTextDate = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
+        val userServiceFunctions = UserServiceFunctions()
+        val email = intent.getStringExtra("email")
+        val password = intent.getStringExtra("password")
+        val fullNameEt = findViewById<EditText>(R.id.complete_your_profile_full_name_field)
+        val birthDateEt = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
+        val phoneNumberEt = findViewById<EditText>(R.id.complete_your_profile_phone_number_field)
+        val countryEt = findViewById<TextInputLayout>(R.id.dropdown_layout)
+        val completeProfileContinueBtn = findViewById<Button>(R.id.complete_your_profile_ContinueBtn)
+        val pickDateBtn = findViewById<Button>(R.id.complete_your_profile_pick_dateBtn)
 
-        // Put the progress we what
-        progressBar.max = 100
-        progressBar.progress = 100
-
-        editTextDate.setOnClickListener {
-            showDatePicker(editTextDate)
-        }
-
-        continueBtn.setOnClickListener {
+        completeProfileContinueBtn.setOnClickListener {
             showCustomDialogBox()
         }
 
@@ -44,9 +45,26 @@ class CompleteYourProfile : AppCompatActivity() {
             dropdownAutoCompleteTextView.setText("", false)
         }
 
+        pickDateBtn.setOnClickListener{
+            showDatePicker(birthDateEt)
+        }
+
+        // Put the progress we what
+        progressBar.max = 100
+        progressBar.progress = 100
+
+        completeProfileContinueBtn.setOnClickListener{
+            userServiceFunctions.signUp(this, email.toString()
+                , password.toString()
+                , fullNameEt.text.toString()
+                , countryEt.toString()
+                , birthDateEt.text.toString()
+                , phoneNumberEt.text.toString())
+        }
+
+
     }
 
-    //Apresenta a data selecionada do datePicker na label
     private fun showDatePicker(editTextDate: EditText) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -61,7 +79,6 @@ class CompleteYourProfile : AppCompatActivity() {
         datePickerDialog.show()
     }
 
-    //apresentar aviso de conta criada com sucesso
     private fun showCustomDialogBox(){
         val dialogBinding = layoutInflater.inflate(R.layout.account_setup_successful, null)
         val dialog = Dialog(this)
@@ -72,4 +89,5 @@ class CompleteYourProfile : AppCompatActivity() {
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
     }
+
 }

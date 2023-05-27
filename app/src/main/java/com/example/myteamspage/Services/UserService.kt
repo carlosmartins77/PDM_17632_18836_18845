@@ -11,4 +11,7 @@ interface UserService {
 
     @PUT("auth/forgotpassword")
     fun forgotPasswordUser(@Body requestBody: Map<String, String>): Call<Map<String, String>>
+
+    @POST("auth/signup")
+    fun signUpUser(@Body requestBody: Map<String, String>): Call<Map<String, String>>
 }
