@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Teams"
+        android:id="@+id/bottom_nav_teams"
+        android:icon="@drawable/baseline_groups_24"/>
+    <item android:title="Schedule"
+        android:id="@+id/bottom_nav_schedule"
+        android:icon="@drawable/baseline_calendar_month_24"/>
+    <item android:title="Publication"
+        android:id="@+id/bottom_nav_publication"
+        android:icon="@drawable/baseline_format_list_bulleted_24"/>
+    <item android:title="Settings"
+        android:id="@+id/bottom_nav_settings"
+        android:icon="@drawable/baseline_manage_accounts_24"/>
+</menu>

@@ -42,6 +42,10 @@ class LoginActivity : AppCompatActivity() {
 
         //region Login
         loginBtn.setOnClickListener {
+
+            val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+            startActivity(intent)
+
             val emailTemp = emailEt.text.toString()
             val passwordTemp = passwordEditText.text.toString()
 
