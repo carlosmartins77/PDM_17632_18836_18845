@@ -32,7 +32,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:progressDrawable="@drawable/custom_backgroud_bar"
-                android:indeterminate="false"></ProgressBar>
+                android:indeterminate="false">
+            </ProgressBar>
     </LinearLayout>
 
     <TextView
@@ -41,7 +42,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_height="wrap_content"
-        android:hint="Create your Team"
+        android:textColor="@color/black"
+        android:text="Create your Team"
+        android:textStyle="bold"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_header" />
@@ -52,7 +55,7 @@
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Create your dream Team"
+        android:text="Create your dream team"
         android:textSize="19dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/create_your_team_register_title1" />

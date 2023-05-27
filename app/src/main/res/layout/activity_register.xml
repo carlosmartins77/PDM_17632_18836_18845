@@ -32,7 +32,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:progressDrawable="@drawable/custom_backgroud_bar"
-            android:indeterminate="false"></ProgressBar>
+            android:indeterminate="false">
+        </ProgressBar>
     </LinearLayout>
 
 
@@ -42,16 +43,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:text="Create an account"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/register_header"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/register_header">
+    </TextView>
 
     <TextView
         android:id="@+id/instructionTv"
-        android:layout_width="wrap_content"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:text="Enter email and password!"
+        android:textColor="@color/gray"
+        android:text="Enter email and password. If you forget, then you have to do forget password."
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/createAccTv"
         app:layout_constraintStart_toStartOf="@id/createAccTv"
@@ -63,6 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/instructionTv"
         app:layout_constraintStart_toStartOf="@id/instructionTv"
@@ -71,7 +78,7 @@
 
     <EditText
         android:id="@+id/registerEmailEt"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:textSize="20sp"
@@ -85,20 +92,29 @@
         android:layout_height="wrap_content"
         android:text="Password"
         android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/registerEmailEt"
         app:layout_constraintStart_toStartOf="@id/registerEmailEt"
         android:layout_marginTop="50sp">
     </TextView>
 
-    <EditText
-        android:id="@+id/registerPasswordEt"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordContainer"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:inputType="textPassword"
+        android:layout_marginTop="1sp"
+        app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/registerPasswordTv"
         app:layout_constraintStart_toStartOf="@id/registerPasswordTv">
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/registerConfirmPasswordTv"
@@ -106,20 +122,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Confirm Password"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/registerPasswordEt"
-        app:layout_constraintStart_toStartOf="@id/registerPasswordEt">
+        app:layout_constraintTop_toBottomOf="@id/passwordContainer"
+        app:layout_constraintStart_toStartOf="@id/passwordContainer">
     </TextView>
 
-    <EditText
-        android:id="@+id/registerConfirmPasswordEt"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordContainer"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:inputType="textPassword"
+        android:layout_marginTop="1sp"
+        app:passwordToggleEnabled="true"
         app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordTv"
         app:layout_constraintStart_toStartOf="@id/registerConfirmPasswordTv">
-    </EditText>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/confirmPasswordText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            >
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/registerContinueBtn"
@@ -127,7 +152,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordEt"
+        app:layout_constraintTop_toBottomOf="@id/confirmPasswordContainer"
         android:layout_marginTop="20dp"
         android:text="Continue"
         android:textColor="@color/white"

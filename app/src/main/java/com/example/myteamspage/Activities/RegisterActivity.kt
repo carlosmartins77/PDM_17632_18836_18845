@@ -8,16 +8,21 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import com.example.myteamspage.R
+import com.google.android.material.textfield.TextInputEditText
 
 class RegisterActivity : AppCompatActivity() {
+
+    private lateinit var confirmPasswordEditText: TextInputEditText
+    private lateinit var passwordEditText: TextInputEditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        passwordEditText = findViewById(R.id.passwordText)
+        confirmPasswordEditText = findViewById(R.id.confirmPasswordText)
         val continueButton = findViewById<Button>(R.id.registerContinueBtn)
         val emailEt = findViewById<EditText>(R.id.registerEmailEt)
-        val passwordEt = findViewById<EditText>(R.id.registerPasswordEt)
-        val confirmPasswordEt = findViewById<EditText>(R.id.registerConfirmPasswordEt)
         val arrowBack = findViewById<ImageView>(R.id.register_arrow_icon)
 
         val progressBar = findViewById<ProgressBar>(R.id.register_progress_bar)
@@ -29,13 +34,15 @@ class RegisterActivity : AppCompatActivity() {
 
         continueButton.setOnClickListener {
             val emailTemp = emailEt.text.toString()
-            val password = passwordEt.text.toString()
-            val confirmPassword = confirmPasswordEt.text.toString()
+            val password = passwordEditText.text.toString()
+            val confirmPassword = confirmPasswordEditText.text.toString()
 
             if(emailTemp.matches(Regex("/^\\S+@\\S+\\.\\S+\$/")))
             {
                 val email = emailTemp
             }
+            val intent = Intent(this@RegisterActivity, CompleteYourProfile::class.java)
+            startActivity(intent)
         }
 
         arrowBack.setOnClickListener {

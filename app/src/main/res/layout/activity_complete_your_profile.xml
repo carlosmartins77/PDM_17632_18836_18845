@@ -32,7 +32,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:progressDrawable="@drawable/custom_backgroud_bar"
-            android:indeterminate="false"></ProgressBar>
+            android:indeterminate="false">
+        </ProgressBar>
     </LinearLayout>
 
 
@@ -43,14 +44,17 @@
         android:layout_marginLeft="30dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:text="Complete Your Profile"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/complete_your_profile_header"></TextView>
+        app:layout_constraintTop_toBottomOf="@+id/complete_your_profile_header">
+    </TextView>
 
     <TextView
         android:id="@+id/complete_your_profile_title2"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:text="Complete you profile now or you can skip and fill it out later"
@@ -65,6 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Full Name"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_title2"
         app:layout_constraintStart_toStartOf="@id/complete_your_profile_title2"
@@ -74,7 +80,7 @@
 
     <EditText
         android:id="@+id/complete_your_profile_full_name_field"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_full_name"
@@ -87,6 +93,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Phone Number"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_full_name_field"
         app:layout_constraintStart_toStartOf="@id/complete_your_profile_full_name_field"
@@ -95,7 +103,7 @@
 
     <EditText
         android:id="@+id/complete_your_profile_phone_number_field"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_phone_number"
@@ -109,6 +117,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date of Birth"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_phone_number_field"
         app:layout_constraintStart_toStartOf="@id/complete_your_profile_phone_number_field">
@@ -116,19 +126,23 @@
 
     <EditText
         android:id="@+id/complete_your_profile_date_of_birth_field"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none"
         android:contentDescription="Date of birth input field"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile__date_of_birth"
         app:layout_constraintStart_toStartOf="@id/complete_your_profile__date_of_birth">
     </EditText>
 
-
     <TextView
         android:id="@+id/complete_your_profile_country"
         android:layout_marginTop="20sp"
         android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:text="Country"
         android:textSize="20sp"
@@ -136,16 +150,19 @@
         app:layout_constraintStart_toStartOf="@id/complete_your_profile_date_of_birth_field">
     </TextView>
 
-    <EditText
-        android:id="@+id/complete_your_profile_country_field"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dropdown_layout"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:contentDescription="Country input field"
         app:layout_constraintTop_toBottomOf="@id/complete_your_profile_country"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_country">
-    </EditText>
-
+        app:layout_constraintStart_toStartOf="@id/complete_your_profile_country"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/complete_your_profile_ContinueBtn"
@@ -153,7 +170,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_country_field"
+        app:layout_constraintTop_toBottomOf="@id/dropdown_layout"
         android:layout_marginTop="20dp"
         android:text="Continue"
         android:background="@drawable/button_border_get_started">
