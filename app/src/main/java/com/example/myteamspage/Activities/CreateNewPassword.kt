@@ -1,6 +1,7 @@
 package com.example.myteamspage.Activities
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,34 +9,55 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import com.example.myteamspage.R
+import com.example.myteamspage.Services.UserServiceFunctions
+import com.example.myteamspage.Utils.ValidateParameters
 import com.google.android.material.textfield.TextInputEditText
 
 class CreateNewPassword : AppCompatActivity() {
 
-    private lateinit var confirmPasswordEditText: TextInputEditText
-    private lateinit var passwordEditText: TextInputEditText
+    private lateinit var confirmPasswordEt: TextInputEditText
+    private lateinit var passwordEt: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_create_new_password)
 
+        val userServiceFunctions = UserServiceFunctions()
         val continueBtn = findViewById<Button>(R.id.continueCreatePWDBtn)
-        passwordEditText = findViewById(R.id.passwordText)
-        confirmPasswordEditText = findViewById(R.id.confirmPasswordText)
+        passwordEt = findViewById(R.id.passwordText)
+        confirmPasswordEt = findViewById(R.id.confirmPasswordText)
+        lateinit var email: String
+        lateinit var password: String
 
         continueBtn.setOnClickListener {
-            val password = passwordEditText.text.toString()
-            val confirmPassword = confirmPasswordEditText.text.toString()
-            // validar se as passwords são iguais ou não
-            if( password != confirmPassword){
-                Toast.makeText(applicationContext,"PASSWORD´S ARE DIFFERENT!",Toast.LENGTH_LONG).show()
-            } else if(password.isEmpty() && confirmPassword.isEmpty()){
-                Toast.makeText(applicationContext,"INSERT THE PASSWORD´S FIELDS",Toast.LENGTH_LONG).show()
+            val passwordTemp = passwordEt.text.toString()
+            val email = intent.getStringExtra("confirmCodeEmail").toString()
+            val code = intent.getStringExtra("confirmCodeCode").toString()
+            val confirmPassword = confirmPasswordEt.text.toString()
+            if(passwordTemp == confirmPassword && passwordTemp != null) {
+                val validateParameters = ValidateParameters("NoEmail", passwordTemp)
+
+                if(validateParameters.isValidPassword(passwordTemp)){
+                    password = passwordTemp
+                }
+                else{
+                    Toast.makeText(applicationContext,passwordTemp, Toast.LENGTH_LONG).show()
+                }
             }
-            else{
-                //mostrar o alerta da password alterada
-                showCustomDialogBox()
+            else if(passwordTemp != confirmPassword)
+            {
+                Toast.makeText(applicationContext,"PASSWORDS DON'T MATCH", Toast.LENGTH_LONG).show()
+            }
+            else
+            {
+                Toast.makeText(applicationContext,"ERROR", Toast.LENGTH_LONG).show()
+            }
+            //endregion
+
+            if(password != null)
+            {
+                userServiceFunctions.forgotPasswordUser(this, email, code, password)
             }
         }
     }

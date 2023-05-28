@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import com.example.myteamspage.Activities.CompleteYourProfile
+import com.example.myteamspage.Activities.*
 import com.example.myteamspage.UserService
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,15 +14,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UserServiceFunctions {
 
-    fun signUp(context: Context, email: String, password: String, fullName: String, country: String, birthdate: String, phoneNumber: String)
-    {
-        val BASE_URL = "http://192.168.1.2:3000/"
+    fun createUserService(): UserService {
+        val BASE_URL = "http://192.168.1.3:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service = retrofit.create(UserService::class.java)
+
+        return retrofit.create(UserService::class.java)
+    }
+
+    fun signUp(context: Context, email: String, password: String, fullName: String, country: String, birthdate: String, phoneNumber: String)
+    {
+        val service = createUserService()
 
         val requestBody = mapOf(
             "email" to email,
@@ -41,12 +46,12 @@ class UserServiceFunctions {
                 response: Response<Map<String, String>>
             ) {
                 if (response.isSuccessful) {
-                    val intent = Intent(context, CompleteYourProfile::class.java)
+                    val intent = Intent(context, Logo_KickOff::class.java)
                     context.startActivity(intent)
-                    Toast.makeText(context, "Register successful", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Registration successful", Toast.LENGTH_LONG).show()
                 } else {
                     Log.d("responsecodenestjs", response.toString())
-                    Toast.makeText(context, "Register failed", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Registration failed", Toast.LENGTH_LONG).show()
                 }
             }
 
@@ -55,5 +60,103 @@ class UserServiceFunctions {
                 Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    fun sendRecoveryCodeUser(context: Context, email:String)
+    {
+        val service = createUserService()
+
+        val requestBody = mapOf(
+            "email" to email
+        )
+
+        val call = service.sendRecoveryCodeUser(requestBody)
+
+        call.enqueue(object : Callback<Map<String, String>> {
+            override fun onResponse(
+                call: Call<Map<String, String>>,
+                response: Response<Map<String, String>>
+            ) {
+                if (response.isSuccessful) {
+                    val intent = Intent(context, ConfirmCode::class.java)
+                    intent.putExtra("forgotPwdEmail", email)
+                    context.startActivity(intent)
+                } else {
+                    Log.d("responsecodenestjs", response.toString())
+                    Toast.makeText(context, "Could not send OTP code", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("forgotPwdError", t.message.toString())
+                Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    fun verifyResetCode(context: Context, email: String, resetCode: String) {
+        val service = createUserService()
+
+        val requestBody = mapOf(
+            "email" to email,
+            "resetcode" to resetCode
+        )
+
+        val call = service.verifyResetCode(requestBody)
+
+        call.enqueue(object : Callback<Boolean> {
+            override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
+                if (response.isSuccessful && response.body() == true) {
+                    val intent = Intent(context, CreateNewPassword::class.java)
+                    intent.putExtra("confirmCodeEmail", email)
+                    intent.putExtra("confirmCodeCode", resetCode)
+                    context.startActivity(intent)
+                } else {
+                    Log.d("responsecodenestjs", response.toString())
+                    Toast.makeText(context, "Invalid reset code", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Boolean>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("confirmCodeError", t.message.toString())
+                Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    fun forgotPasswordUser(context: Context, email:String, code: String, newPassword: String){
+        val service = createUserService()
+
+        val requestBody = mapOf(
+            "email" to email,
+            "code" to code,
+            "newpassword" to newPassword
+        )
+
+        val call = service.forgotPasswordUser(requestBody)
+
+        call.enqueue(object : Callback<Map<String, String>> {
+            override fun onResponse(
+                call: Call<Map<String, String>>,
+                response: Response<Map<String, String>>
+            ) {
+                if (response.isSuccessful) {
+                    val intent = Intent(context, LoginActivity::class.java)
+                    Toast.makeText(context, "Password changed successfully", Toast.LENGTH_LONG).show()
+                    context.startActivity(intent)
+                } else {
+                    Toast.makeText(context, "Error updating password", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                t.printStackTrace()
+                Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+
+
     }
 }
