@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myteamspage.Activities.Account.AccountOptions
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityScheduleGameBinding
@@ -37,7 +38,7 @@ class ScheduleGame : AppCompatActivity() {
                 R.id.bottom_nav_teams -> startActivity(Intent(this@ScheduleGame, LoginActivity::class.java))
                 R.id.bottom_nav_schedule -> startActivity(Intent(this@ScheduleGame, ComposeTweet::class.java))
                 R.id.bottom_nav_publication -> startActivity(Intent(this@ScheduleGame, PublicationScreen::class.java))
-                R.id.bottom_nav_settings -> startActivity(Intent(this@ScheduleGame, LoginActivity::class.java))
+                R.id.bottom_nav_settings -> startActivity(Intent(this@ScheduleGame, AccountOptions::class.java))
                 else ->{
                 }
             }

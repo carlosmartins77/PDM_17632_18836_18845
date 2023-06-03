@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Account.Security">
+
+    <TextView
+        android:id="@+id/securityLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:textSize="25sp"
+        android:text="Security"
+        android:layout_marginStart="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/rememberMeLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:text="Remember me"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/securityLabel">
+    </TextView>
+
+    <Switch
+        android:id="@+id/switchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/securityLabel">
+    </Switch>
+
+    <TextView
+        android:id="@+id/faceIDLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:text="Face ID"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rememberMeLabel">
+    </TextView>
+
+    <Switch
+        android:id="@+id/switchFaceIDButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rememberMeLabel">
+    </Switch>
+
+    <TextView
+        android:id="@+id/twoFactorAuthLabel"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18sp"
+        android:text="Two-Factor Authentication"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/faceIDLabel">
+    </TextView>
+
+
+    <Button
+        android:id="@+id/changePasswordBTN"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/twoFactorAuthLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Change Password"
+        android:textColor="@color/white"
+        android:background="@drawable/button_border_get_started">
+    </Button>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_margin="20dp"
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_border_get_started"
+        app:menu="@menu/bottom_nav">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Account.Notification">
+
+
+
+    <TextView
+        android:id="@+id/personalInfoLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:textSize="25dp"
+        android:text="Notification"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/matchAlertsLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:text="Match Alerts"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/personalInfoLabel">
+    </TextView>
+
+    <Switch
+        android:id="@+id/switchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/personalInfoLabel">
+    </Switch>
+
+    <TextView
+        android:id="@+id/publicationAlertsLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:text="Publication Alerts"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/matchAlertsLabel">
+    </TextView>
+
+    <Switch
+        android:id="@+id/switchPublicationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/matchAlertsLabel">
+    </Switch>
+
+    <TextView
+        android:id="@+id/appUpdatesLabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:text="Add Updates"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/publicationAlertsLabel">
+    </TextView>
+
+    <Switch
+        android:id="@+id/switchAppUpdatesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/publicationAlertsLabel">
+    </Switch>
+
+    <ImageView
+        android:id="@+id/notificationsView"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/appUpdatesLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/notifications" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_margin="20dp"
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/button_border_get_started"
+        app:menu="@menu/bottom_nav">
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

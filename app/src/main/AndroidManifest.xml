@@ -16,6 +16,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Activities.Account.AccountOptions"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Account.PersonalInfo"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Account.General"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Account.Notification"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.Account.Security"
+            android:exported="false" />
+        <activity
             android:name=".Activities.PublicationScreen"
             android:exported="false" />
         <activity
