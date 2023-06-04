@@ -18,7 +18,7 @@ class SetNotifications : AppCompatActivity() {
 
         val continueBtn = findViewById<Button>(R.id.set_notifications_button2)
 
-        // Put the progress we what
+        // Put the progress we want
         progressBar.max = 100
         progressBar.progress = 50
 

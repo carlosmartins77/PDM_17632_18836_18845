@@ -24,10 +24,6 @@ class ScheduleGameScreen2 : AppCompatActivity() {
 
         schedule_data.text = calendar_date
 
-        val recyclerView = findViewById<RecyclerView>(R.id.RecyclerViewTeam)
-        recyclerView.adapter = MyAdapterRec(listOf("A","B"))
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
         myIcon = findViewById(R.id.SELECTTEAMFIELD)
 
         myIcon.setOnClickListener {

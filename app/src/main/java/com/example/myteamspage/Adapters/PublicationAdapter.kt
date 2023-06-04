@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myteamspage.Publication
+import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.R
 
 class PublicationAdapter(private val tweets: List<Publication>) :

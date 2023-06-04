@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <ImageView
         android:id="@+id/layout_item_team1_id"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -16,7 +17,10 @@
         android:id="@+id/layout_item_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:textSize="15sp"
+        android:hint="asasa"
         android:textAlignment="center"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="@id/layout_item_team1_id"
         app:layout_constraintEnd_toStartOf="@+id/layout_item_team2_id"
         app:layout_constraintStart_toEndOf="@id/layout_item_team1_id"
@@ -24,10 +28,11 @@
 
     <ImageView
         android:id="@+id/layout_item_team2_id"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,19 @@
 package com.example.myteamspage.Activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.*
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myteamspage.Activities.Account.AccountOptions
+import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Adapters.MyAdapterRec
+import com.example.myteamspage.Classes.Games
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityScheduleGameBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class ScheduleGame : AppCompatActivity() {
@@ -26,24 +28,16 @@ class ScheduleGame : AppCompatActivity() {
         val btn_schedule_game = findViewById<Button>(R.id.btnScheduleGame)
         val recyclerView = findViewById<RecyclerView>(R.id.main_recyclerview)
 
-        recyclerView.adapter = MyAdapterRec(listOf("A","B","C","D","E","F","G","H","I","J"))
+        // Create a list of Games objects
+        val gamesList: List<Games> = listOf(
+            Games(R.drawable.realmadrid, "12/01/2023 | 12:20", R.drawable.arsenal),
+            Games(R.drawable.internazionalemilano, "30/03/2023 | 21:40", R.drawable.manchestercity),
+            Games(R.drawable.atleticodemadrid, "1/04/2023 | 19:00", R.drawable.barcelona),
+        )
+
+        val gamesAdapter = MyAdapterRec(gamesList)
+        recyclerView.adapter = gamesAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-
-        binding = ActivityScheduleGameBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.bottom_nav_teams -> startActivity(Intent(this@ScheduleGame, LoginActivity::class.java))
-                R.id.bottom_nav_schedule -> startActivity(Intent(this@ScheduleGame, ComposeTweet::class.java))
-                R.id.bottom_nav_publication -> startActivity(Intent(this@ScheduleGame, PublicationScreen::class.java))
-                R.id.bottom_nav_settings -> startActivity(Intent(this@ScheduleGame, AccountOptions::class.java))
-                else ->{
-                }
-            }
-            true
-        }
 
 
         schedule_data.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -58,6 +52,32 @@ class ScheduleGame : AppCompatActivity() {
             intent.putExtra("calendar_date", date);
             startActivity(intent)
         }
+
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.bottom_nav_teams
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_nav_teams -> true
+                R.id.bottom_nav_schedule -> {
+                    startActivity(Intent(applicationContext, ScheduleGame::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_publication -> {
+                    Log.d("String Error", "Entrou aqui")
+                    startActivity(Intent(applicationContext, PublicationScreen::class.java))
+                    true
+                }
+                R.id.bottom_nav_settings -> {
+                    startActivity(Intent(applicationContext, PersonalInfo::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
 
     }
 }

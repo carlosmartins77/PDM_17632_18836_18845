@@ -1,4 +1,4 @@
-package com.example.myteamspage
+package com.example.myteamspage.Classes
 
 class Publication(
     val avatarImage: Int,

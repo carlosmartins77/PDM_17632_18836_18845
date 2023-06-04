@@ -145,12 +145,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="85dp"
-            android:hint="Cancel" />
+            android:textColor="@color/white"
+            android:background="@drawable/button_border_already_have_an_account"
+            android:text="Cancel" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Finish" />
+            android:textColor="@color/white"
+            android:background="@drawable/button_border_get_started"
+            android:text="Finish"/>
 
     </LinearLayout>
 
