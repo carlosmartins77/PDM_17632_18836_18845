@@ -33,6 +33,8 @@ class CompleteYourProfile : AppCompatActivity() {
             showCustomDialogBox()
         }
 
+
+
         //Adicionar as opções à combo para escolher o pais
         val options = listOf("Alemanha", "Espanha", "Portugal", "Ucrania")
         val dropdownAutoCompleteTextView: AutoCompleteTextView = findViewById(R.id.dropdown)
@@ -62,8 +64,15 @@ class CompleteYourProfile : AppCompatActivity() {
                 , phoneNumberEt.text.toString())
         }
 
+        val continueBtn = findViewById<Button>(R.id.skip)
+
+        continueBtn.setOnClickListener {
+            userServiceFunctions.getAllCountries()
+        }
 
     }
+
+
 
     private fun showDatePicker(editTextDate: EditText) {
         val calendar = Calendar.getInstance()

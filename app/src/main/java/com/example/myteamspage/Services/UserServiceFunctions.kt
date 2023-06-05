@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class UserServiceFunctions {
 
     fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.1.3:3000/"
+        val BASE_URL = "http://172.21.192.1:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -158,5 +158,29 @@ class UserServiceFunctions {
         })
 
 
+    }
+
+    fun getAllCountries(){
+        val service = createUserService()
+        val call = service.getCountries()
+
+        call.enqueue(object : Callback<List<String>> {
+            override fun onResponse(
+                call: Call<List<String>>,
+                response: Response<List<String>>
+            ) {
+                if (response.isSuccessful) {
+                    val retroFit2 = response.body()
+                    Log.d("SAJBDAJSFGAJKBFKAJBDKJ", retroFit2.toString())
+                } else {
+                    val retroFit2 = response.body()
+                    Log.d("yyyyyyyyyyy", retroFit2.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
     }
 }
