@@ -11,12 +11,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import com.example.myteamspage.Activities.ComposeTweet
-import com.example.myteamspage.Activities.LoginActivity
-import com.example.myteamspage.Activities.PublicationScreen
+import com.example.myteamspage.Activities.*
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
 import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
@@ -26,6 +25,10 @@ class PersonalInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
+
+        binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val birthDateEt = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
         val pickDateBtn = findViewById<Button>(R.id.complete_your_profile_pick_dateBtn)
 
@@ -45,19 +48,28 @@ class PersonalInfo : AppCompatActivity() {
             showDatePicker(birthDateEt)
         }
 
-        binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.bottom_nav_teams -> startActivity(Intent(this@PersonalInfo, LoginActivity::class.java))
-                R.id.bottom_nav_schedule -> startActivity(Intent(this@PersonalInfo, ComposeTweet::class.java))
-                R.id.bottom_nav_publication -> startActivity(Intent(this@PersonalInfo, PublicationScreen::class.java))
-                R.id.bottom_nav_settings -> startActivity(Intent(this@PersonalInfo, AccountOptions::class.java))
-                else ->{
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.bottom_nav_settings
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_nav_teams -> {
+                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    finish()
+                    true
                 }
+                R.id.bottom_nav_schedule -> {
+                    startActivity(Intent(applicationContext, ScheduleGame::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_publication -> {
+                    startActivity(Intent(applicationContext, PublicationScreen::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_settings -> true
+                else -> false
             }
-            true
         }
     }
 

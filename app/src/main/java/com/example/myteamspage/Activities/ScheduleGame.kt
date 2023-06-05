@@ -12,6 +12,7 @@ import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.Classes.Games
 import com.example.myteamspage.R
+import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
 import com.example.myteamspage.databinding.ActivityScheduleGameBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -23,6 +24,9 @@ class ScheduleGame : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule_game)
+
+        val binding = ActivityScheduleGameBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val schedule_data = findViewById<CalendarView>(R.id.Calendar)
         val btn_schedule_game = findViewById<Button>(R.id.btnScheduleGame)
@@ -39,7 +43,6 @@ class ScheduleGame : AppCompatActivity() {
         recyclerView.adapter = gamesAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
         schedule_data.setOnDateChangeListener { view, year, month, dayOfMonth ->
             date = "$dayOfMonth/$month/$year"
             Log.d("Date", date.toString())
@@ -53,20 +56,19 @@ class ScheduleGame : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-        bottomNavigationView.selectedItemId = R.id.bottom_nav_teams
+        bottomNavigationView.selectedItemId = R.id.bottom_nav_schedule
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.bottom_nav_teams -> true
-                R.id.bottom_nav_schedule -> {
-                    startActivity(Intent(applicationContext, ScheduleGame::class.java))
+                R.id.bottom_nav_teams ->{
+                    startActivity(Intent(applicationContext, SetNotifications::class.java))
                     finish()
                     true
                 }
+                R.id.bottom_nav_schedule ->  true
                 R.id.bottom_nav_publication -> {
-                    Log.d("String Error", "Entrou aqui")
                     startActivity(Intent(applicationContext, PublicationScreen::class.java))
+                    finish()
                     true
                 }
                 R.id.bottom_nav_settings -> {
@@ -77,7 +79,5 @@ class ScheduleGame : AppCompatActivity() {
                 else -> false
             }
         }
-
-
     }
 }

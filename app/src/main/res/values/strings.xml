@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyTeamsPage</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_team">Select Team</string>
+    <string name="select_oponent">Select Oponent</string>
+    <string name="select_location">Select Location</string>
+    <string name="publication_header">Publication</string>
+
 </resources>

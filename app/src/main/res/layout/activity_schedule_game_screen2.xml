@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ScheduleGameScreen2">
+    tools:context=".Activities.ScheduleGameScreen2"
+    android:theme="@style/Theme.MyTeamsPage.Material">
 
     <TextView
         android:id="@+id/Kickoff"
@@ -16,129 +17,130 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/SCHEDULE"
+    <LinearLayout
+        android:id="@+id/schedule_game_screen2_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="SCHEDULE"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:gravity="center_vertical"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:paddingRight="20dp"
+        app:layout_constraintStart_toStartOf="@+id/Kickoff"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/schedule_game_screen2_arrow_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src ="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/SCHEDULE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="SCHEDULE"
+            android:textSize="17sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
+    </LinearLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/select_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/select_date"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_game_screen2_header"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-
-    <TextView
-        android:id="@+id/SELECTDATE"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:id="@+id/select_team"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="SELECT DATE"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_margin="16dp"
+        android:hint="@string/select_team"
+        app:layout_constraintTop_toBottomOf="@+id/select_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SCHEDULE" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_team"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:importantForAccessibility="yes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <TextView
-        android:id="@+id/SELECTDATEFIELD"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="...."
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:id="@id/select_oponent"
+        android:layout_margin="16dp"
+        android:hint="@string/select_oponent"
+        app:layout_constraintTop_toBottomOf="@+id/select_team"
         app:layout_constraintStart_toStartOf="parent"
-        android:drawableRight="@drawable/calendar"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTDATE" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_oponent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-
-    <TextView
-        android:id="@+id/SELECTTEAM"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="SELECT YOUR TEAM"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:id="@id/select_location"
+        android:layout_margin="16dp"
+        android:hint="@string/select_location"
+        app:layout_constraintTop_toBottomOf="@+id/select_oponent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTDATEFIELD" />
-
-    <TextView
-        android:id="@+id/SELECTTEAMFIELD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="...."
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:drawableRight="@drawable/arrow_drop_down"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTTEAM" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerViewTeam"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/SELECTOPPONENT"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTOPPONENT"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/SELECTOPPONENT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="SELECT THE OPPONENT TEAM"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTTEAMFIELD" />
-
-    <TextView
-        android:id="@+id/SELECTOPPONENTFIELD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="...."
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:drawableRight="@drawable/arrow_drop_down"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTOPPONENT" />
-
-
-    <TextView
-        android:id="@+id/SELECTLOCATION"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="SELECT THE LOCATION"
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTOPPONENTFIELD" />
-
-    <TextView
-        android:id="@+id/SELECTLOCATIONFIELD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="...."
-        android:textSize="17sp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:drawableRight="@drawable/arrow_drop_down"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTLOCATION" />
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent">
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="25dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/SELECTLOCATIONFIELD"
+        app:layout_constraintTop_toBottomOf="@+id/select_location"
         tools:layout_editor_absoluteX="15dp">
 
         <Button
@@ -146,6 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="85dp"
             android:textColor="@color/white"
+            android:id="@+id/schedule_game2_btn_cancel"
             android:background="@drawable/button_border_already_have_an_account"
             android:text="Cancel" />
 
@@ -153,10 +156,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:id="@+id/schedule_game2_btn_finish"
             android:background="@drawable/button_border_get_started"
             android:text="Finish"/>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

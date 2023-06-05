@@ -3,14 +3,20 @@ package com.example.myteamspage.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
+import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PublicationScreen : AppCompatActivity() {
 
@@ -22,6 +28,9 @@ class PublicationScreen : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.publication_screen_recyclerview)
         val progressBar = findViewById<ProgressBar>(R.id.publication_progress_bar)
+
+        val my_publication = findViewById<TextView>(R.id.publication_my_publication)
+        val featherPen = findViewById<ImageView>(R.id.publication_btn_feather)
 
         // Put the progress value you want
         progressBar.max = 100
@@ -37,6 +46,41 @@ class PublicationScreen : AppCompatActivity() {
         val publicationAdapter = PublicationAdapter(publicationList)
         recyclerView.adapter = publicationAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.bottom_nav_publication
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_nav_teams -> {
+                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_schedule -> {
+                    startActivity(Intent(applicationContext, ScheduleGame::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_publication -> true
+                R.id.bottom_nav_settings -> {
+                    startActivity(Intent(applicationContext, PersonalInfo::class.java))
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
+
+        my_publication.setOnClickListener {
+            val intent = Intent(this@PublicationScreen, ScheduleGameScreen2::class.java)
+            startActivity(intent)
+        }
+
+        featherPen.setOnClickListener {
+            val intent = Intent(this@PublicationScreen, ComposeTweet::class.java)
+            startActivity(intent)
+        }
 
     }
 }

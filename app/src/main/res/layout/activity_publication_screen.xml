@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:hint="SCHEDULE"
+        android:hint="@string/publication_header"
         android:textSize="17sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +67,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/publication_my_publication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -111,11 +112,21 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/publication_screen_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="350dp"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintTop_toBottomOf="@+id/ProgressBar"
         tools:layout_editor_absoluteX="0dp" />
+
+    <ImageView
+        android:id="@+id/publication_btn_feather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/featherpen"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="300dp"
+        app:layout_constraintTop_toBottomOf="@+id/publication_screen_recyclerview" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_margin="20dp"
