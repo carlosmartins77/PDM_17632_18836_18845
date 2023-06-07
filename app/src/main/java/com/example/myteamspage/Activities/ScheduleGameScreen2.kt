@@ -1,6 +1,7 @@
 package com.example.myteamspage.Activities
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.R
+import java.util.*
 
 class ScheduleGameScreen2 : AppCompatActivity() {
 
@@ -23,18 +25,14 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         val oponent = arrayOf("Porto", "Famalicao", "M. City", "Inter", "Napoles")
         val location = arrayOf("Braga", "Porto", "New York", "Berlim", "Vila Real")
 
-        val autoCompleteDate: AutoCompleteTextView = findViewById(R.id.auto_complete_date)
+        val pickDate = findViewById<TextView>(R.id.schedule_game2_date_field)
         val autoCompleteTeam: AutoCompleteTextView = findViewById(R.id.auto_complete_team)
         val autoCompleteOponent: AutoCompleteTextView = findViewById(R.id.auto_complete_oponent)
         val autoCompleteLocation: AutoCompleteTextView = findViewById(R.id.auto_complete_location)
 
-        val adapterDate = ArrayAdapter(this, R.layout.dropdown_list_item, date)
-        autoCompleteDate.setAdapter(adapterDate)
+        val schedule_date = intent.getStringExtra("calendar_date")
 
-        autoCompleteDate.onItemClickListener = AdapterView.OnItemClickListener{ AdapterView, view, i, l ->
-            val selectedItem = AdapterView.getItemAtPosition(i)
-            Toast.makeText(this, "Item: $selectedItem", Toast.LENGTH_SHORT).show()
-        }
+        pickDate.setText(schedule_date)
 
         val adapterTeam = ArrayAdapter(this, R.layout.dropdown_list_item, team)
         autoCompleteTeam.setAdapter(adapterTeam)
@@ -75,6 +73,20 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         //   myRecyclerView.visibility = View.VISIBLE
         //}
 
+        pickDate.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, selectedYear, selectedMonth, selectedDay ->
+                val formattedDate = String.format("%02d/%02d/%04d", selectedDay, selectedMonth + 1, selectedYear)
+                pickDate.setText(formattedDate)
+            }, year, month, day)
+
+            datePickerDialog.show()
+        }
+
         arrowBack.setOnClickListener {
             val intent = Intent(this@ScheduleGameScreen2, ScheduleGame::class.java)
             startActivity(intent)
@@ -94,3 +106,4 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         }
     }
 }
+

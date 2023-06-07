@@ -38,7 +38,7 @@ class MyPublication : AppCompatActivity() {
 
         progressBar.progress = adjustedProgress + 50
 
-        
+
         // Create a list of Publication objects
         val publicationList: List<Publication> = listOf(
             Publication(R.drawable.baseline_image_24, "User 1", "Tweet 1", R.drawable.baseline_gif_box_24, R.drawable.arrow_drop_down),

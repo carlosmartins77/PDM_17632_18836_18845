@@ -47,27 +47,25 @@
             app:layout_constraintTop_toBottomOf="@+id/Kickoff" />
     </LinearLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/select_date"
+    <LinearLayout
+        android:id="@+id/schedule_game2_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/select_date"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_game_screen2_header"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        app:layout_constraintEnd_toEndOf="parent">
-        <AutoCompleteTextView
-            android:id="@+id/auto_complete_date"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_game_screen2_header">
+
+        <EditText
+            android:id="@+id/schedule_game2_date_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="20sp"
+            android:drawableRight="@drawable/calendar"
+            android:contentDescription="Date of birth input field"
+            app:layout_constraintTop_toBottomOf="@id/schedule_game_screen2_header"
+            app:layout_constraintStart_toStartOf="@id/schedule_game_screen2_header">
+        </EditText>
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -75,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="@string/select_team"
-        app:layout_constraintTop_toBottomOf="@+id/select_date"
+        app:layout_constraintTop_toBottomOf="@+id/schedule_game2_date"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         app:layout_constraintEnd_toEndOf="parent">
