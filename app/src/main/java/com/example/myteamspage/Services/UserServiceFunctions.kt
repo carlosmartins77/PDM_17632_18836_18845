@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class UserServiceFunctions {
 
     fun createUserService(): UserService {
-        val BASE_URL = "http://172.21.192.1:3000/"
+        val BASE_URL = "http://192.168.27.51:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -157,30 +157,28 @@ class UserServiceFunctions {
             }
         })
 
-
     }
 
-    fun getAllCountries(){
+    fun getAllCountries(callback: (List<String>) -> Unit) {
         val service = createUserService()
         val call = service.getCountries()
 
-        call.enqueue(object : Callback<List<String>> {
-            override fun onResponse(
-                call: Call<List<String>>,
-                response: Response<List<String>>
-            ) {
+        call.enqueue(object : Callback<Map<String, List<String>>> {
+            override fun onResponse(call: Call<Map<String, List<String>>>, response: Response<Map<String, List<String>>>) {
                 if (response.isSuccessful) {
-                    val retroFit2 = response.body()
-                    Log.d("SAJBDAJSFGAJKBFKAJBDKJ", retroFit2.toString())
+                    val countriesResponse = response.body()
+                    val countries = countriesResponse?.get("message") ?: emptyList()
+
+                    callback(countries.sorted())
                 } else {
-                    val retroFit2 = response.body()
-                    Log.d("yyyyyyyyyyy", retroFit2.toString())
+                    Log.d("ErrorXXXXXXXXXXXXXXX", response.message())
                 }
             }
 
-            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+            override fun onFailure(call: Call<Map<String, List<String>>>, t: Throwable) {
                 t.printStackTrace()
             }
         })
     }
+
 }

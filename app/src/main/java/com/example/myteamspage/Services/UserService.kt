@@ -23,5 +23,5 @@ interface UserService {
     fun verifyResetCode(@Body requestBody: Map<String, String>): Call<Boolean>
 
     @GET("auth/getcountries")
-    fun getCountries(): Call<List<String>>
+    fun getCountries(): Call<Map<String, List<String>>>
 }

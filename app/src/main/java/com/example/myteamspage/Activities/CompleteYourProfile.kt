@@ -25,30 +25,26 @@ class CompleteYourProfile : AppCompatActivity() {
         val fullNameEt = findViewById<EditText>(R.id.complete_your_profile_full_name_field)
         val birthDateEt = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
         val phoneNumberEt = findViewById<EditText>(R.id.complete_your_profile_phone_number_field)
-        val countryEt = findViewById<TextInputLayout>(R.id.dropdown_layout)
         val completeProfileContinueBtn = findViewById<Button>(R.id.complete_your_profile_ContinueBtn)
         val pickDateBtn = findViewById<Button>(R.id.complete_your_profile_pick_dateBtn)
+        val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
 
         completeProfileContinueBtn.setOnClickListener {
             showCustomDialogBox()
         }
 
-
-
-        //Adicionar as opções à combo para escolher o pais
-        val options = listOf("Alemanha", "Espanha", "Portugal", "Ucrania")
-        val dropdownAutoCompleteTextView: AutoCompleteTextView = findViewById(R.id.dropdown)
-        val dropdownLayoutAutoCompleteTextView: TextInputLayout = findViewById(R.id.dropdown_layout)
-
-        val adapter = ArrayAdapter(this, R.layout.list_item, options)
-        dropdownAutoCompleteTextView.setAdapter(adapter)
-
-        dropdownLayoutAutoCompleteTextView.setEndIconOnClickListener {
-            dropdownAutoCompleteTextView.setText("", false)
-        }
-
         pickDateBtn.setOnClickListener{
             showDatePicker(birthDateEt)
+        }
+
+        userServiceFunctions.getAllCountries { countries ->
+            val adapterDate = ArrayAdapter(this, R.layout.dropdown_list_item, countries)
+            autoCompleteCountry.setAdapter(adapterDate)
+
+            autoCompleteCountry.onItemClickListener = AdapterView.OnItemClickListener { AdapterView, view, i, l ->
+                val selectedItem = AdapterView.getItemAtPosition(i)
+                Toast.makeText(this, "Item: $selectedItem", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // Put the progress we what
@@ -59,15 +55,10 @@ class CompleteYourProfile : AppCompatActivity() {
             userServiceFunctions.signUp(this, email.toString()
                 , password.toString()
                 , fullNameEt.text.toString()
-                , countryEt.toString()
+                ,"1"
+                //, countryEt.toString()
                 , birthDateEt.text.toString()
                 , phoneNumberEt.text.toString())
-        }
-
-        val continueBtn = findViewById<Button>(R.id.skip)
-
-        continueBtn.setOnClickListener {
-            userServiceFunctions.getAllCountries()
         }
 
     }

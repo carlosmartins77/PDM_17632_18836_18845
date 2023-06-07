@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.CompleteYourProfile">
+    tools:context=".Activities.CompleteYourProfile"
+    android:theme="@style/Theme.MyTeamsPage.Material">
 
     <LinearLayout
         android:id="@+id/complete_your_profile_header"
@@ -143,56 +144,60 @@
     </Button>
 
 
-    <TextView
-        android:id="@+id/complete_your_profile_country"
-        android:layout_marginTop="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:text="Country"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_date_of_birth_field"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_date_of_birth_field">
-    </TextView>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dropdown_layout"
+        android:id="@+id/select_country"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_country"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_country"
-        >
+        android:hint="@string/select_country"
+        android:layout_marginRight="30dp"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_date_of_birth_field"
+        app:layout_constraintStart_toStartOf="@id/complete_your_profile_date_of_birth_field"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintEnd_toEndOf="parent">
         <AutoCompleteTextView
-            android:id="@+id/dropdown"
+            android:id="@+id/auto_complete_country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:inputType="none"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/complete_your_profile_ContinueBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="270sp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dropdown_layout"
-        android:layout_marginTop="20dp"
-        android:text="Continue"
-        android:background="@drawable/button_border_get_started">
-    </Button>
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/select_country"
+        app:layout_constraintEnd_toEndOf="@+id/select_country"
+        app:layout_constraintTop_toBottomOf="@+id/select_country"
+        >
 
-    <Button
-        android:id="@+id/skip"
-        android:onClick="GetCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dropdown_layout"
-        android:layout_marginTop="80dp"
-        android:text="SKIP"
-        android:background="@drawable/button_border_get_started">
-    </Button>
+        <Button
+            android:id="@+id/complete_your_profile_ContinueBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginTop="20dp"
+            android:text="Continue"
+            android:layout_marginRight="20sp"
+            android:textColor="@color/white"
+            android:background="@drawable/button_border_get_started">
+        </Button>
+
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginTop="20dp"
+            android:text="SKIP"
+            android:textColor="@color/white"
+            android:background="@drawable/button_border_get_started">
+        </Button>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
