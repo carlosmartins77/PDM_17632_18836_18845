@@ -1,10 +1,17 @@
 package com.example.myteamspage.Activities
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Toast
 import com.example.myteamspage.R
+import com.example.myteamspage.Services.UserServiceFunctions
+import org.json.JSONObject
 
 class Logo_KickOff : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,6 +20,8 @@ class Logo_KickOff : AppCompatActivity() {
 
         val getStarted = findViewById<Button>(R.id.logo_kick_off_button1)
         val alreadyHaveAccount = findViewById<Button>(R.id.logo_kick_off_button2)
+        val userServiceFunctions = UserServiceFunctions()
+        val sharedPreferences = getSharedPreferences(this.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
 
         getStarted.setOnClickListener{
             val intent = Intent(this@Logo_KickOff, Create_your_team_register::class.java)
@@ -23,5 +32,10 @@ class Logo_KickOff : AppCompatActivity() {
             val intent = Intent(this@Logo_KickOff, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        userServiceFunctions.getAllCountries { countries ->
+            sharedPreferences.edit().putString("CountryList",countries.toString()).commit()
+        }
     }
+
 }

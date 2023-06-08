@@ -2,15 +2,14 @@ package com.example.myteamspage.Activities
 
 import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.UserServiceFunctions
-import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
 class CompleteYourProfile : AppCompatActivity() {
@@ -23,17 +22,16 @@ class CompleteYourProfile : AppCompatActivity() {
         val email = intent.getStringExtra("email")
         val password = intent.getStringExtra("password")
         val fullNameEt = findViewById<EditText>(R.id.complete_your_profile_full_name_field)
-        val birthDateEt = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
         val phoneNumberEt = findViewById<EditText>(R.id.complete_your_profile_phone_number_field)
         val completeProfileContinueBtn = findViewById<Button>(R.id.complete_your_profile_ContinueBtn)
-        val pickDateBtn = findViewById<Button>(R.id.complete_your_profile_pick_dateBtn)
         val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
+        val birthDateEt = findViewById<EditText>(R.id.birth_Date_field)
 
         completeProfileContinueBtn.setOnClickListener {
             showCustomDialogBox()
         }
 
-        pickDateBtn.setOnClickListener{
+        birthDateEt.setOnClickListener{
             showDatePicker(birthDateEt)
         }
 
@@ -60,10 +58,7 @@ class CompleteYourProfile : AppCompatActivity() {
                 , birthDateEt.text.toString()
                 , phoneNumberEt.text.toString())
         }
-
     }
-
-
 
     private fun showDatePicker(editTextDate: EditText) {
         val calendar = Calendar.getInstance()

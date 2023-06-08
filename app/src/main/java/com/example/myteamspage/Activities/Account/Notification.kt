@@ -3,13 +3,13 @@ package com.example.myteamspage.Activities.Account
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.myteamspage.Activities.ComposeTweet
-import com.example.myteamspage.Activities.LoginActivity
-import com.example.myteamspage.Activities.PublicationScreen
+import com.example.myteamspage.Activities.*
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
+import com.example.myteamspage.databinding.ActivityGeneralBinding
 import com.example.myteamspage.databinding.ActivityNotificationBinding
 import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Notification : AppCompatActivity() {
     private lateinit var binding : ActivityNotificationBinding
@@ -18,19 +18,32 @@ class Notification : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
 
-        binding = ActivityNotificationBinding.inflate(layoutInflater)
+        val binding = ActivityNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.bottom_nav_teams -> startActivity(Intent(this@Notification, LoginActivity::class.java))
-                R.id.bottom_nav_schedule -> startActivity(Intent(this@Notification, ComposeTweet::class.java))
-                R.id.bottom_nav_publication -> startActivity(Intent(this@Notification, PublicationScreen::class.java))
-                R.id.bottom_nav_settings -> startActivity(Intent(this@Notification, AccountOptions::class.java))
-                else ->{
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.selectedItemId = R.id.bottom_nav_settings
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_nav_teams -> {
+                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    finish()
+                    true
                 }
+                R.id.bottom_nav_schedule -> {
+                    startActivity(Intent(applicationContext, ScheduleGame::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_publication -> {
+                    startActivity(Intent(applicationContext, MyPublication::class.java))
+                    finish()
+                    true
+                }
+                R.id.bottom_nav_settings -> true
+                else -> false
             }
-            true
         }
     }
 }

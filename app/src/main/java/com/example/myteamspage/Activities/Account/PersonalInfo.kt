@@ -2,21 +2,22 @@ package com.example.myteamspage.Activities.Account
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
+import android.util.Log
+import android.view.View
+import android.widget.*
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
 import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputLayout
+import org.json.JSONObject
 import java.util.*
 
 class PersonalInfo : AppCompatActivity() {
@@ -25,27 +26,14 @@ class PersonalInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
-
         binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val birthDateEt = findViewById<EditText>(R.id.complete_your_profile_date_of_birth_field)
-        val pickDateBtn = findViewById<Button>(R.id.complete_your_profile_pick_dateBtn)
+        val pickDate = findViewById<EditText>(R.id.birth_Date_field)
+        val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
 
-        //Adicionar as opções à combo para escolher o pais
-        val options = listOf("Alemanha", "Espanha", "Portugal", "Ucrania")
-        val dropdownAutoCompleteTextView: AutoCompleteTextView = findViewById(R.id.dropdown)
-        val dropdownLayoutAutoCompleteTextView: TextInputLayout = findViewById(R.id.dropdown_layout)
-
-        val adapter = ArrayAdapter(this, R.layout.list_item, options)
-        dropdownAutoCompleteTextView.setAdapter(adapter)
-
-        dropdownLayoutAutoCompleteTextView.setEndIconOnClickListener {
-            dropdownAutoCompleteTextView.setText("", false)
-        }
-
-        pickDateBtn.setOnClickListener{
-            showDatePicker(birthDateEt)
+        pickDate.setOnClickListener{
+            showDatePicker(pickDate)
         }
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
@@ -71,6 +59,18 @@ class PersonalInfo : AppCompatActivity() {
                 else -> false
             }
         }
+
+        val sharedPreferences = getSharedPreferences(this.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
+        val message = JSONObject(sharedPreferences.getString("CountryList","{}"))
+        val countries = jsonObjectToList(message)
+
+        val adapterDate = ArrayAdapter(this, R.layout.dropdown_list_item, countries)
+        autoCompleteCountry.setAdapter(adapterDate)
+
+        autoCompleteCountry.onItemClickListener = AdapterView.OnItemClickListener { AdapterView, view, i, l ->
+            val selectedItem = AdapterView.getItemAtPosition(i)
+            Toast.makeText(this, "Item: $selectedItem", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showDatePicker(editTextDate: EditText) {
@@ -86,4 +86,21 @@ class PersonalInfo : AppCompatActivity() {
 
         datePickerDialog.show()
     }
+
+    fun jsonObjectToList(jsonObject: JSONObject): List<String> {
+        val stringList = mutableListOf<String>()
+
+        // Iterate over the keys of the JSON object
+        val keysIterator = jsonObject.keys()
+        while (keysIterator.hasNext()) {
+            val key = keysIterator.next()
+            val value = jsonObject.getString(key)
+
+            // Add the key to the list
+            stringList.add(key)
+        }
+
+        return stringList
+    }
+
 }

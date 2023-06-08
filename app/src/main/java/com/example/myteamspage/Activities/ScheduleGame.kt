@@ -8,6 +8,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myteamspage.Activities.Account.AccountOptions
+import com.example.myteamspage.Activities.Account.General
 import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.Classes.Games
@@ -72,7 +74,7 @@ class ScheduleGame : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_nav_settings -> {
-                    startActivity(Intent(applicationContext, PersonalInfo::class.java))
+                    startActivity(Intent(applicationContext, AccountOptions::class.java))
                     finish()
                     true
                 }

@@ -63,7 +63,7 @@ class PublicationScreen : AppCompatActivity() {
                 }
                 R.id.bottom_nav_publication -> true
                 R.id.bottom_nav_settings -> {
-                    startActivity(Intent(applicationContext, PersonalInfo::class.java))
+                    startActivity(Intent(applicationContext, AccountOptions::class.java))
                     finish()
                     true
                 }
