@@ -3,15 +3,13 @@ package com.example.myteamspage.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
-import com.example.myteamspage.Activities.Account.PersonalInfo
+import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.R

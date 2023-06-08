@@ -1,5 +1,5 @@
 
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.CreateAccount
 
 
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.widget.*
 import com.example.myteamspage.R
 import com.example.myteamspage.Utils.ValidateParameters
-import com.example.myteamspage.Services.UserServiceFunctions
 import com.google.android.material.textfield.TextInputEditText
 
 class RegisterActivity : AppCompatActivity() {

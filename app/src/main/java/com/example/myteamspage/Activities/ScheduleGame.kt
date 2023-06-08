@@ -3,18 +3,15 @@ package com.example.myteamspage.Activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
-import com.example.myteamspage.Activities.Account.General
-import com.example.myteamspage.Activities.Account.PersonalInfo
+import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.Classes.Games
 import com.example.myteamspage.R
-import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
 import com.example.myteamspage.databinding.ActivityScheduleGameBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

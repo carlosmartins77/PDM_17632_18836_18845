@@ -1,4 +1,4 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.ForgotPassword
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

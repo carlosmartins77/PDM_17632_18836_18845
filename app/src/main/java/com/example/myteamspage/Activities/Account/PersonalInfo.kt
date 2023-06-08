@@ -1,22 +1,16 @@
 package com.example.myteamspage.Activities.Account
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.*
 import com.example.myteamspage.Activities.*
+import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.R
-import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
 import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.textfield.TextInputLayout
 import org.json.JSONObject
 import java.util.*
 

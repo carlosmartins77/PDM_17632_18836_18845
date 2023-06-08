@@ -1,15 +1,13 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.CreateAccount
 
-import android.animation.ObjectAnimator
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
-import android.widget.TextView
+import com.example.myteamspage.Activities.Logo_KickOff
 import com.example.myteamspage.R
-import java.util.*
 
 class Create_your_team_register : AppCompatActivity() {
 

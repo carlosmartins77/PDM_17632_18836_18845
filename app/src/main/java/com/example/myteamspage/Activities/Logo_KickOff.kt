@@ -2,16 +2,12 @@ package com.example.myteamspage.Activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Toast
+import com.example.myteamspage.Activities.CreateAccount.Create_your_team_register
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.UserServiceFunctions
-import org.json.JSONObject
 
 class Logo_KickOff : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

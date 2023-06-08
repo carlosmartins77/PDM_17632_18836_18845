@@ -4,9 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myteamspage.Activities.*
+import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.R
-import com.example.myteamspage.databinding.ActivityGeneralBinding
-import com.example.myteamspage.databinding.ActivityNotificationBinding
 import com.example.myteamspage.databinding.ActivitySecurityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

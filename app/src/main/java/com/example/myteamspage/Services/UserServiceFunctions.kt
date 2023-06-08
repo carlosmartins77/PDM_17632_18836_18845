@@ -5,6 +5,8 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.*
+import com.example.myteamspage.Activities.ForgotPassword.ConfirmCode
+import com.example.myteamspage.Activities.ForgotPassword.CreateNewPassword
 import com.example.myteamspage.UserService
 import retrofit2.Call
 import retrofit2.Callback

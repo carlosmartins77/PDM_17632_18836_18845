@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.Create_your_team_register">
+    tools:context=".Activities.CreateAccount.Create_your_team_register">
 
     <LinearLayout
         android:id="@+id/create_your_team_register_header"

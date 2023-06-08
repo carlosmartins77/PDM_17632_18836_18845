@@ -1,4 +1,4 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.CreateAccount
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.UserServiceFunctions

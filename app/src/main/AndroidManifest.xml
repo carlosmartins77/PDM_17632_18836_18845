@@ -37,25 +37,25 @@
             android:name=".Activities.PublicationScreen"
             android:exported="false" />
         <activity
-            android:name=".Activities.CreateNewPassword"
+            android:name=".Activities.ForgotPassword.CreateNewPassword"
             android:exported="false" />
         <activity
-            android:name=".Activities.ConfirmCode"
+            android:name=".Activities.ForgotPassword.ConfirmCode"
             android:exported="false" />
         <activity
-            android:name=".Activities.ForgotPWD"
+            android:name=".Activities.ForgotPassword.ForgotPWD"
             android:exported="false" />
         <activity
             android:name=".Activities.ComposeTweet"
             android:exported="false" />
         <activity
-            android:name=".Activities.SetNotifications"
+            android:name=".Activities.CreateAccount.SetNotifications"
             android:exported="false" />
         <activity
-            android:name=".Activities.CompleteYourProfile"
+            android:name=".Activities.CreateAccount.CompleteYourProfile"
             android:exported="false" />
         <activity
-            android:name=".Activities.Create_your_team_register"
+            android:name=".Activities.CreateAccount.Create_your_team_register"
             android:exported="false" />
         <activity
             android:name=".Activities.Logo_KickOff"
@@ -67,10 +67,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.ForgotPasswordActivity"
+            android:name=".Activities.ForgotPassword.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.RegisterActivity"
+            android:name=".Activities.CreateAccount.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.ScheduleGameScreen2"
