@@ -2,6 +2,7 @@ package com.example.myteamspage.Services
 
 import android.content.Context
 import android.content.Intent
+import android.media.session.MediaSession.Token
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.*
@@ -13,11 +14,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import com.example.myteamspage.Utils.SharedPreferencesFuncs
 
 class UserServiceFunctions {
-
-    fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.27.51:3000/"
+    val sharedPreferencesFuncs = SharedPreferencesFuncs()
+    private fun createUserService(): UserService {
+        val BASE_URL = "http://192.168.1.5:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -27,8 +29,7 @@ class UserServiceFunctions {
         return retrofit.create(UserService::class.java)
     }
 
-    fun signUp(context: Context, email: String, password: String, fullName: String, country: String, birthdate: String, phoneNumber: String)
-    {
+    fun signUp(context: Context, email: String, password: String, fullName: String,  country: String, birthdate: String, phoneNumber: String) {
         val service = createUserService()
 
         val requestBody = mapOf(
@@ -64,8 +65,7 @@ class UserServiceFunctions {
         })
     }
 
-    fun sendRecoveryCodeUser(context: Context, email:String)
-    {
+    fun sendRecoveryCodeUser(context: Context, email: String) {
         val service = createUserService()
 
         val requestBody = mapOf(
@@ -128,7 +128,7 @@ class UserServiceFunctions {
         })
     }
 
-    fun forgotPasswordUser(context: Context, email:String, code: String, newPassword: String){
+    fun forgotPasswordUser(context: Context, email: String, code: String, newPassword: String) {
         val service = createUserService()
 
         val requestBody = mapOf(
@@ -146,7 +146,8 @@ class UserServiceFunctions {
             ) {
                 if (response.isSuccessful) {
                     val intent = Intent(context, LoginActivity::class.java)
-                    Toast.makeText(context, "Password changed successfully", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Password changed successfully", Toast.LENGTH_LONG)
+                        .show()
                     context.startActivity(intent)
                 } else {
                     Toast.makeText(context, "Error updating password", Toast.LENGTH_LONG).show()
@@ -166,14 +167,17 @@ class UserServiceFunctions {
         val call = service.getCountries()
 
         call.enqueue(object : Callback<Map<String, List<String>>> {
-            override fun onResponse(call: Call<Map<String, List<String>>>, response: Response<Map<String, List<String>>>) {
+            override fun onResponse(
+                call: Call<Map<String, List<String>>>,
+                response: Response<Map<String, List<String>>>
+            ) {
                 if (response.isSuccessful) {
                     val countriesResponse = response.body()
                     val countries = countriesResponse?.get("message") ?: emptyList()
 
                     callback(countries.sorted())
                 } else {
-                    Log.d("ErrorXXXXXXXXXXXXXXX", response.message())
+                    Log.d("ErrorGetAllCountries", response.message())
                 }
             }
 
@@ -183,4 +187,43 @@ class UserServiceFunctions {
         })
     }
 
+    fun login(context: Context, email: String, password: String) {
+        val service = createUserService()
+
+        val requestBody = mapOf(
+            "email" to email,
+            "password" to password
+        )
+
+        val call = service.login(requestBody)
+
+        call.enqueue(object : Callback<Map<String, String>> {
+            override fun onResponse(
+                call: Call<Map<String, String>>,
+                response: Response<Map<String, String>>
+            ) {
+                if (response.isSuccessful) {
+                    val token = response.body()?.get("token")
+
+                    // Save token on shared preferences
+                    sharedPreferencesFuncs.saveData(context, "TOKEN_KEY", token.toString())
+
+                    //region Start Schedule Game Activity
+                    val intent = Intent(context, ScheduleGame::class.java)
+                    context.startActivity(intent)
+                    //endregion
+
+                    Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+                } else {
+                    //Log.d("responserequest", response.toString())
+                    Toast.makeText(context, "Wrong email or password", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                t.printStackTrace()
+                Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
 }

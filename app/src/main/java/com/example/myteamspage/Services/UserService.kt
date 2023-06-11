@@ -8,7 +8,7 @@ import retrofit2.http.PUT
 
 interface UserService {
     @POST("auth/login")
-    fun loginUser(@Body requestBody: Map<String, String>): Call<Map<String, String>>
+    fun login(@Body requestBody: Map<String, String>): Call<Map<String, String>>
 
     @PUT("auth/forgotpassword")
     fun forgotPasswordUser(@Body requestBody: Map<String, String>): Call<Map<String, String>>

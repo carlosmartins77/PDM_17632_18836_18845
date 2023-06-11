@@ -49,13 +49,14 @@ class CompleteYourProfile : AppCompatActivity() {
         progressBar.progress = 100
 
         completeProfileContinueBtn.setOnClickListener{
-            userServiceFunctions.signUp(this, email.toString()
+            userServiceFunctions.signUp(this
+                , email.toString()
                 , password.toString()
                 , fullNameEt.text.toString()
-                ,"1"
-                //, countryEt.toString()
+                , autoCompleteCountry.text.toString()
                 , birthDateEt.text.toString()
-                , phoneNumberEt.text.toString())
+                , phoneNumberEt.text.toString()
+            )
         }
     }
 
