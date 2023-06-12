@@ -30,20 +30,10 @@ class MyPublication : AppCompatActivity() {
 
         val token = sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()
 
-        val progressBar = findViewById<ProgressBar>(R.id.my_publication_progress_bar)
         val recyclerView = findViewById<RecyclerView>(R.id.my_publication_recyclerview)
 
         val feed = findViewById<TextView>(R.id.my_publication_feed)
         val featherPen = findViewById<ImageView>(R.id.my_publication_btn_feather)
-
-        progressBar.max = 100 // Set the maximum value of the progress bar
-
-        val desiredProgress = 75 // Desired progress value between 50 and 100
-        val progressRange = 100 - 50 // Calculate the range between the minimum and maximum progress values
-
-        val adjustedProgress = (desiredProgress - 50) * progressRange / 50 // Adjust the desired progress within the range
-
-        progressBar.progress = adjustedProgress + 50
 
 
         // Create a list of Publication objects

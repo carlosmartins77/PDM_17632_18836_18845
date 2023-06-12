@@ -84,7 +84,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingRight="20dp"
         android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,13 +93,13 @@
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:layout_weight="1"
-            android:background="@color/gray" />
+            android:background="@color/blue" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:layout_weight="1"
-            android:background="@color/blue" />
+            android:background="@color/gray" />
 
     </LinearLayout>
 

@@ -25,14 +25,10 @@ class PublicationScreen : AppCompatActivity() {
         setContentView(binding.root)
 
         val recyclerView = findViewById<RecyclerView>(R.id.publication_screen_recyclerview)
-        val progressBar = findViewById<ProgressBar>(R.id.publication_progress_bar)
 
         val my_publication = findViewById<TextView>(R.id.publication_my_publication)
         val featherPen = findViewById<ImageView>(R.id.publication_btn_feather)
 
-        // Put the progress value you want
-        progressBar.max = 100
-        progressBar.progress = 50
 
         // Create a list of Publication objects
         val publicationList: List<Publication> = listOf(
