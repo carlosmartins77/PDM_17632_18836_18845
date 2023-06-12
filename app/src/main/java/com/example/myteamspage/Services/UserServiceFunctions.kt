@@ -1,8 +1,10 @@
 package com.example.myteamspage.Services
 
 import android.content.Context
+import android.content.Context.WIFI_SERVICE
 import android.content.Intent
 import android.media.session.MediaSession.Token
+import android.net.wifi.WifiManager
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.*
@@ -15,11 +17,16 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
+import java.net.Inet4Address
+import java.net.NetworkInterface
+import java.util.*
+import android.text.format.Formatter
 
 class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
+
     private fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.1.5:3000/"
+        val BASE_URL = "http://192.168.1.68:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -207,7 +214,7 @@ class UserServiceFunctions {
 
                     // Save token on shared preferences
                     sharedPreferencesFuncs.saveData(context, "TOKEN_KEY", token.toString())
-
+                    sharedPreferencesFuncs.saveData(context, "USERNAME_KEY", email.toString())
                     //region Start Schedule Game Activity
                     val intent = Intent(context, ScheduleGame::class.java)
                     context.startActivity(intent)

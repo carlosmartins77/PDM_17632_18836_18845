@@ -19,7 +19,7 @@ class GameServiceFunctions {
     //val token = sharedPreferencesFuncs.loadData(context,"TOKEN_KEY").toString()
 
     fun createGameService(): GameService {
-        val BASE_URL = "http://192.168.1.5:7060/"
+        val BASE_URL = "http://192.168.1.68:7060/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

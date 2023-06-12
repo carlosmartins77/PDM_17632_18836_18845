@@ -29,7 +29,6 @@ class PublicationAdapter(private val tweets: List<Publication>) :
 
     override fun onBindViewHolder(holder: TweetViewHolder, position: Int) {
         val currentTweet = tweets[position]
-        Log.d("Carlos", (tweets.size).toString())
         // Set the data for each tweet item in the list
         holder.profileImage.setImageResource(currentTweet.avatarImage)
         holder.username.text = currentTweet.usernameText

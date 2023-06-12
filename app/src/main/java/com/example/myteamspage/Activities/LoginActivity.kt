@@ -1,8 +1,10 @@
 package com.example.myteamspage.Activities
 
 import android.content.Intent
+import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.Formatter
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText

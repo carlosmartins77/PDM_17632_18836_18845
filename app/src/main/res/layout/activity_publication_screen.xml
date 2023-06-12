@@ -85,28 +85,23 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingRight="20dp"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/publication_screen_header">
 
-        <ProgressBar
-            android:id="@+id/publication_progress_bar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:indeterminate="false"
-            android:progressDrawable="@drawable/custom_backgroud_bar"></ProgressBar>
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:background="@color/gray" />
 
-        <TextView
-            android:id="@+id/SCHEDULE"
-            android:layout_width="303dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:hint="SCHEDULE"
-            android:textSize="17sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:background="@color/blue" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

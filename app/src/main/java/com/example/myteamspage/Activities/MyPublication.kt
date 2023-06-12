@@ -3,9 +3,7 @@ package com.example.myteamspage.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.PersonalInfo
@@ -13,6 +11,9 @@ import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.R
+import com.example.myteamspage.Services.PublicationServiceFunction
+import com.example.myteamspage.Services.TeamServiceFunctions
+import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.databinding.ActivityMyPublicationBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -23,6 +24,11 @@ class MyPublication : AppCompatActivity() {
 
         val binding = ActivityMyPublicationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val publicationServiceFunctions = PublicationServiceFunction()
+        val sharedPreferencesFuncs = SharedPreferencesFuncs()
+
+        val token = sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()
 
         val progressBar = findViewById<ProgressBar>(R.id.my_publication_progress_bar)
         val recyclerView = findViewById<RecyclerView>(R.id.my_publication_recyclerview)
@@ -51,6 +57,8 @@ class MyPublication : AppCompatActivity() {
 
         recyclerView.adapter = publicationAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.my_publication_bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.bottom_nav_publication
