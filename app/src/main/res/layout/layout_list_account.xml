@@ -37,7 +37,7 @@
             android:id="@+id/complete_your_profile_arrow_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:src="@drawable/arrow_icon_right" />
     </LinearLayout>
 

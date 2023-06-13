@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Adapters.Account.AdapterRec
+import com.example.myteamspage.Classes.Account
+import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -88,8 +90,19 @@ class AccountOptions : AppCompatActivity() {
     }
 
     fun addDataToRecycleView(){
+        val accountOptions: List<Account> = listOf(
+            Account(R.drawable.personalinfo, "Personal Info"),
+            Account(R.drawable.notification, "Notifications"),
+            Account(R.drawable.friendlist, "Friend List"),
+            Account(R.drawable.general, "General"),
+            Account(R.drawable.security, "Security"),
+            Account(R.drawable.helpcenter, "Help Center"),
+            Account(R.drawable.aboutkickoff, "About KickOff"),
+            Account(R.drawable.logout, "Logout")
+        )
+
         val recyclerView = findViewById<RecyclerView>(R.id.menuOptionsRecyclerView)
-        recyclerView.adapter = AdapterRec(listOf("Personal Info","Notifications","Friend List","General","Security","Help Center","About KickOff","Logout"))
+        recyclerView.adapter = AdapterRec(accountOptions)
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
