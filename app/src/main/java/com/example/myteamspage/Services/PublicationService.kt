@@ -1,5 +1,7 @@
 package com.example.myteamspage.Services
 
+import com.example.myteamspage.Classes.Publication
+import com.example.myteamspage.Classes.SQLPublication
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -14,5 +16,5 @@ interface PublicationService {
     fun listallpub(@Header("Authorization") token: String): Call<Map<String, List<String>>>
 
     @GET("pub/listpubsbyuser")
-    fun listpubsbyuser(@Header("Authorization") token: String): Call<Map<String, List<String>>>
+    fun listpubsbyuser(@Header("Authorization") token: String): Call<List<SQLPublication>>
 }

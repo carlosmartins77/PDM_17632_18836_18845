@@ -3,9 +3,7 @@ package com.example.myteamspage.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
@@ -40,6 +38,7 @@ class PublicationScreen : AppCompatActivity() {
         val publicationAdapter = PublicationAdapter(publicationList)
         recyclerView.adapter = publicationAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.bottom_nav_publication

@@ -35,7 +35,8 @@ class ComposeTweet : AppCompatActivity() {
             Log.d("ComposeTwett", email.toString())
             val inputText = editText.text.toString()
             Log.d("ComposeTwett", inputText.toString())
-            pubServiceFunctions.postPublication(this, token, email , inputText)
+            //pubServiceFunctions.postPublication(this, token, email , inputText)
+            pubServiceFunctions.listpubsbyuser(this, token)
         }
     }
 }

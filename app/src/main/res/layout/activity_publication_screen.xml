@@ -77,7 +77,6 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:id="@+id/ProgressBar"
         android:layout_width="match_parent"
@@ -94,13 +93,11 @@
             android:layout_height="4dp"
             android:layout_weight="1"
             android:background="@color/blue" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:layout_weight="1"
             android:background="@color/gray" />
-
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

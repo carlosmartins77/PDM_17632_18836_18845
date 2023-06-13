@@ -1,11 +1,14 @@
 package com.example.myteamspage.Services
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.Logo_KickOff
 import com.example.myteamspage.Activities.PublicationScreen
+import com.example.myteamspage.Classes.SQLPublication
+import com.example.myteamspage.Classes.SQLitePublication
 import com.example.myteamspage.UserService
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import retrofit2.Call
@@ -62,24 +65,45 @@ class PublicationServiceFunction {
         })
     }
 
-    fun listpubsbyuser(context: Context, token: String, username: String, content: String) {
+    fun listpubsbyuser(context: Context, token: String) {
         val service = createPublicationService()
         val call = service.listpubsbyuser(token)
-        call.enqueue(object : Callback<Map<String, List<String>>> {
-            override fun onResponse(
-                call: Call<Map<String, List<String>>>,
-                response: Response<Map<String, List<String>>>
-            ) {
+        call.enqueue(object : Callback<List<SQLPublication>> {
+            override fun onResponse(call: Call<List<SQLPublication>>, response: Response<List<SQLPublication>>) {
                 if (response.isSuccessful) {
-                    val pubResponse = response.body()
-                    val pub = pubResponse?.get("message") ?: emptyList()
-                    //callback(pub.sorted())
+                    try {
+                        val pubResponse = response.body()
+                        val pub = pubResponse ?: emptyList()
+                        Log.d("PUBLICATIONSERVICEFUNCTION", pub.toString())
+
+                        // Store the values in SQLite database
+                        val databaseHelper = SQLitePublication(context)
+                        val db = databaseHelper.writableDatabase
+
+                        // Create the table if it doesn't exist
+                        val createTableQuery = "CREATE TABLE IF NOT EXISTS TABLE_NAME (COLUMN_USERNAME TEXT, COLUMN_CONTENT TEXT, COLUMN_DATE TEXT)"
+                        db.execSQL(createTableQuery)
+
+                        // Iterate over the publications and insert them into the database
+                        pub.forEach { publication ->
+                            val values = ContentValues().apply {
+                                put("COLUMN_USERNAME", publication.username)
+                                put("COLUMN_CONTENT", publication.content)
+                                put("COLUMN_DATE", publication.createdAt)
+                            }
+                            db.insert("TABLE_NAME", null, values)
+                        }
+                        db.close()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        Log.d("EXCEPTION", e.message.toString())
+                    }
                 } else {
                     Log.d("ErrorPublicationGetByUser", response.toString())
                 }
             }
 
-            override fun onFailure(call: Call<Map<String, List<String>>>, t: Throwable) {
+            override fun onFailure(call: Call<List<SQLPublication>>, t: Throwable) {
                 t.printStackTrace()
                 Log.d("FAILUREGETPUBLICATION", t.message.toString())
             }
