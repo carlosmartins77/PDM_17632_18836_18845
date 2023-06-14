@@ -91,7 +91,7 @@
             android:name=".Activities.HomePageActivity"
             android:exported="false" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDCUhrARFOnjqzk9OG6eLFsSv8lbq9OMWg"></meta-data>
+            android:value=""></meta-data>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
