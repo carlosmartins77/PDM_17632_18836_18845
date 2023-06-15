@@ -1,16 +1,10 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.ScheduleGames
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.R
 import java.util.*
 import com.example.myteamspage.Services.TeamServiceFunctions
@@ -85,13 +79,16 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         val btn_finish = findViewById<Button>(R.id.schedule_game2_btn_finish)
 
         btn_finish.setOnClickListener {
-            gameServiceFunctions.scheduleGame(this
+            /*gameServiceFunctions.scheduleGame(this
                 ,token
                 ,autoCompleteTeam.text.toString()
                 ,autoCompleteOpponent.text.toString()
                 ,autoCompleteLocation.text.toString()
                 ,pickDate.text.toString()
-            )
+            )*/
+            val intent = Intent(this@ScheduleGameScreen2, GameSchedule::class.java)
+            startActivity(intent)
+            finish()
         }
 
         // val schedule_data = findViewById<TextView>(R.id.SELECTDATEFIELD)

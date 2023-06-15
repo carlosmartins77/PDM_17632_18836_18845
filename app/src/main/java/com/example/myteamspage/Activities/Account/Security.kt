@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
+import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivitySecurityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

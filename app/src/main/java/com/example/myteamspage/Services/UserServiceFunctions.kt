@@ -1,10 +1,7 @@
 package com.example.myteamspage.Services
 
 import android.content.Context
-import android.content.Context.WIFI_SERVICE
 import android.content.Intent
-import android.media.session.MediaSession.Token
-import android.net.wifi.WifiManager
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.*
@@ -17,10 +14,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
-import java.net.Inet4Address
-import java.net.NetworkInterface
-import java.util.*
-import android.text.format.Formatter
+import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 
 class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()

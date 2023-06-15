@@ -1,4 +1,4 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.ScheduleGames
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
-import com.example.myteamspage.Activities.CreateAccount.SetNotifications
+import com.example.myteamspage.Activities.PublicationScreen
 import com.example.myteamspage.Activities.TeamsHome.TeamsScreen
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.Classes.Games

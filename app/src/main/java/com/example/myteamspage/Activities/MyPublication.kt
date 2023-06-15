@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
+import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Classes.Publication
 import com.example.myteamspage.Classes.SQLitePublication
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.PublicationServiceFunction
-import com.example.myteamspage.Services.TeamServiceFunctions
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.databinding.ActivityMyPublicationBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

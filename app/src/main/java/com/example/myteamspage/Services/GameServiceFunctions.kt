@@ -4,8 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import com.example.myteamspage.Activities.Logo_KickOff
-import com.example.myteamspage.Activities.ScheduleGame
+import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
