@@ -1,7 +1,9 @@
 package com.example.myteamspage.Services
 
 import com.example.myteamspage.Classes.Publication
+import com.example.myteamspage.Classes.PublicationResponse
 import com.example.myteamspage.Classes.SQLPublication
+import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -13,7 +15,7 @@ interface PublicationService {
     fun postPublication(@Header("Authorization") token: String, @Body requestBody: Map<String, String>): Call<Map<String, String>>
 
     @GET("pub/listallpub")
-    fun listallpub(@Header("Authorization") token: String): Call<Map<String, List<String>>>
+    fun listAllPubs(@Header("Authorization") token: String): Call<PublicationResponse>
 
     @GET("pub/listpubsbyuser")
     fun listpubsbyuser(@Header("Authorization") token: String): Call<List<SQLPublication>>

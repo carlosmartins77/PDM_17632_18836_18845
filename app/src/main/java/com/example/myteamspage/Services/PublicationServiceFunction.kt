@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import com.example.myteamspage.Activities.Logo_KickOff
 import com.example.myteamspage.Activities.PublicationScreen
+import com.example.myteamspage.Classes.PublicationImage
+import com.example.myteamspage.Classes.PublicationResponse
 import com.example.myteamspage.Classes.SQLPublication
 import com.example.myteamspage.Classes.SQLitePublication
-import com.example.myteamspage.UserService
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,7 +22,7 @@ class PublicationServiceFunction {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private fun createPublicationService(): PublicationService {
-        val BASE_URL = "http://192.168.1.68:7070/"
+        val BASE_URL = "http://192.168.1.7:7070/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -110,29 +110,34 @@ class PublicationServiceFunction {
         })
     }
 
-    fun listallpub(context: Context, token: String, username: String, content: String) {
+    fun listAllPubs(context: Context, token: String, callback: (List<PublicationImage>) -> Unit) {
         val service = createPublicationService()
-        val call = service.listallpub(token)
-        call.enqueue(object : Callback<Map<String, List<String>>> {
-            override fun onResponse(
-                call: Call<Map<String, List<String>>>,
-                response: Response<Map<String, List<String>>>
-            ) {
+        val call = service.listAllPubs(token)
+        call.enqueue(object : Callback<PublicationResponse> {
+            override fun onResponse(call: Call<PublicationResponse>, response: Response<PublicationResponse>) {
                 if (response.isSuccessful) {
-                    val pubResponse = response.body()
-                    val pub = pubResponse?.get("message") ?: emptyList()
-                    //callback(teams.sorted())
+                    val pubResponse = response.body()?.message
+                    Log.d("OkPublicationGetAllPubs", pubResponse.toString())
+                    if (pubResponse != null) {
+                        callback(pubResponse)
+                    }
                 } else {
-                    Log.d("ErrorPublicationGetByUser", response.toString())
+                    Log.d("ErrorPublicationGetAllPubs", response.toString())
+                    callback(emptyList())
                 }
             }
 
-            override fun onFailure(call: Call<Map<String, List<String>>>, t: Throwable) {
+            override fun onFailure(call: Call<PublicationResponse>, t: Throwable) {
                 t.printStackTrace()
-                Log.d("FAILUREGETPUBLICATION", t.message.toString())
-
+                Log.d("ErrorFailurePublicationGetAllPubs", t.message.toString())
+                callback(emptyList())
             }
         })
     }
+
+
+
+
+
 
 }

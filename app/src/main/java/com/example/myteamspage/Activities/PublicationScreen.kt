@@ -10,36 +10,35 @@ import com.example.myteamspage.Activities.Account.AccountOptions
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 import com.example.myteamspage.Adapters.PublicationAdapter
-import com.example.myteamspage.Classes.Publication
+import com.example.myteamspage.Adapters.Publications.PublicationFeedAdapter
+import com.example.myteamspage.Classes.PublicationResponse
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.myteamspage.Services.PublicationServiceFunction
+import com.example.myteamspage.Utils.SharedPreferencesFuncs
 
 class PublicationScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val publicationServiceFunction = PublicationServiceFunction()
+        val sharedPreferencesFuncs = SharedPreferencesFuncs()
+        val token = sharedPreferencesFuncs.loadData(this, "TOKEN_KEY").toString()
 
         val binding = ActivityPublicationScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.publication_screen_recyclerview)
+        val recyclerView: RecyclerView = findViewById(R.id.publication_screen_recyclerview)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        publicationServiceFunction.listAllPubs(this, token) { publicationsList ->
+            val adapter = PublicationFeedAdapter(publicationsList)
+            recyclerView.adapter = adapter
+        }
 
         val my_publication = findViewById<TextView>(R.id.publication_my_publication)
         val featherPen = findViewById<ImageView>(R.id.publication_btn_feather)
-
-
-        // Create a list of Publication objects
-        val publicationList: List<Publication> = listOf(
-            Publication(R.drawable.baseline_image_24, "User 1", "Tweet 1", R.drawable.baseline_gif_box_24, R.drawable.arrow_drop_down),
-            Publication(R.drawable.arrow_drop_down, "User 2", "Tweet 2", R.drawable.baseline_image_24, R.drawable.baseline_gif_box_24),
-            Publication(R.drawable.baseline_gif_box_24, "User 3", "Tweet 3", R.drawable.arrow_drop_down, R.drawable.baseline_image_24)
-        )
-
-        val publicationAdapter = PublicationAdapter(publicationList)
-        recyclerView.adapter = publicationAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.bottom_nav_publication

@@ -13,16 +13,26 @@ data class SQLPublication(
     val username: String,
     val content: String,
     val createdAt: String,
-    val updatedAt: String,
-    val __v: Int
+    val updatedAt: String
 ) {
     override fun toString(): String {
-        return "SQLPublication(_id='$_id', username='$username', content='$content', createdAt='$createdAt', updatedAt='$updatedAt', __v=$__v)"
+        return "SQLPublication(_id='$_id', username='$username', content='$content', createdAt='$createdAt', updatedAt='$updatedAt')"
     }
 }
 
-class PublicationItem(
+data class PublicationResponse(
+    val message: List<PublicationImage>
+)
+
+data class PublicationImage(
+    val _id: String,
+    val profileImage: Int,
     val username: String,
     val content: String,
-    val date: String
-)
+    val createdAt: String,
+    val updatedAt: String
+) {
+    override fun toString(): String {
+        return "PublicationImage(_id='$_id', profileImage='$profileImage' username='$username', content='$content', createdAt='$createdAt', updatedAt='$updatedAt')"
+    }
+}
