@@ -19,6 +19,7 @@ class PublicationAdapter(private val tweets: List<Publication>) :
         val tweetText: TextView = itemView.findViewById(R.id.tweetText)
         val commentIcon: ImageView = itemView.findViewById(R.id.commentIcon)
         val editIcon: ImageView = itemView.findViewById(R.id.editIcon)
+        val date: TextView = itemView.findViewById(R.id.tweetDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetViewHolder {
@@ -35,6 +36,7 @@ class PublicationAdapter(private val tweets: List<Publication>) :
         holder.tweetText.text = currentTweet.tweetText
         holder.commentIcon.setImageResource(currentTweet.commentIcon)
         holder.editIcon.setImageResource(currentTweet.editIcon)
+        holder.date.text = currentTweet.date
     }
 
     override fun getItemCount() = tweets.size

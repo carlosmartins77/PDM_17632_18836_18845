@@ -3,6 +3,7 @@ package com.example.myteamspage.Classes
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 class SQLitePublication(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -13,10 +14,10 @@ class SQLitePublication(context: Context) :
 
         // Define your table schema here
         private const val TABLE_NAME = "publications"
-        private const val COLUMN_ID = "id"
+        private const val COLUMN_ID = "_id"
         private const val COLUMN_USERNAME = "username"
         private const val COLUMN_CONTENT = "content"
-        private const val COLUMN_DATE = "date"
+        private const val COLUMN_DATE = "createdAt"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -28,7 +29,17 @@ class SQLitePublication(context: Context) :
         db.execSQL(createTableQuery)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        // Handle any necessary upgrades here
+    override fun onUpgrade(
+        db: SQLiteDatabase,
+        oldVersion: Int,
+        newVersion: Int
+    ) {
+        Log.w(
+            SQLitePublication::class.java.name,
+            "Upgrading database from version " + oldVersion + " to "
+                    + newVersion + ", which will destroy all old data"
+        )
+        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
     }
 }

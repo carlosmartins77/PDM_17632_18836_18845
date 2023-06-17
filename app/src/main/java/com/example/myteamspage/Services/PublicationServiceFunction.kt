@@ -22,7 +22,7 @@ class PublicationServiceFunction {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private fun createPublicationService(): PublicationService {
-        val BASE_URL = "http://192.168.1.7:7070/"
+        val BASE_URL = "http://192.168.1.68:7070/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -81,9 +81,10 @@ class PublicationServiceFunction {
                         val db = databaseHelper.writableDatabase
 
                         // Create the table if it doesn't exist
-                        val createTableQuery = "CREATE TABLE IF NOT EXISTS TABLE_NAME (COLUMN_USERNAME TEXT, COLUMN_CONTENT TEXT, COLUMN_DATE TEXT)"
+                        val createTableQuery = "CREATE TABLE IF NOT EXISTS publications (COLUMN_USERNAME TEXT, COLUMN_CONTENT TEXT, COLUMN_DATE TEXT)"
                         db.execSQL(createTableQuery)
 
+                        db.delete("TABLE_NAME", null, null)
                         // Iterate over the publications and insert them into the database
                         pub.forEach { publication ->
                             val values = ContentValues().apply {
@@ -91,7 +92,7 @@ class PublicationServiceFunction {
                                 put("COLUMN_CONTENT", publication.content)
                                 put("COLUMN_DATE", publication.createdAt)
                             }
-                            db.insert("TABLE_NAME", null, values)
+                            db.insert("TABLE_NAME", null, values)  // Updated here
                         }
                         db.close()
                     } catch (e: Exception) {

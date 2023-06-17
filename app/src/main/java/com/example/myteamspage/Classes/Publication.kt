@@ -5,7 +5,8 @@ class Publication(
     val usernameText: String,
     val tweetText: String,
     val commentIcon: Int,
-    val editIcon: Int
+    val editIcon: Int,
+    val date: String
 )
 
 data class SQLPublication(

@@ -21,6 +21,18 @@ import com.example.myteamspage.databinding.ActivityMyPublicationBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
+import java.text.SimpleDateFormat
+import java.util.*
+
+fun convertDateFormat(dateString: String): String {
+    val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
+    val outputFormat = SimpleDateFormat("dd--MM-yyyy", Locale.getDefault())
+    val date = inputFormat.parse(dateString)
+    return outputFormat.format(date!!)
+}
+
+
+
 fun listpubsbyuser(context: Context): List<Publication> {
     val databaseHelper = SQLitePublication(context)
     val db = databaseHelper.readableDatabase
@@ -39,12 +51,18 @@ fun listpubsbyuser(context: Context): List<Publication> {
         val content = if (columnIndexContent != -1) cursor.getString(columnIndexContent) else ""
         val date = if (columnIndexDate != -1) cursor.getString(columnIndexDate) else ""
 
+
+        // Usage example
+        val inputDate = date
+        val convertedDate = convertDateFormat(inputDate)
+
         val publication = Publication(
             R.drawable.baseline_image_24,
             username,
             content,
             R.drawable.baseline_gif_box_24,
-            R.drawable.arrow_drop_down
+            R.drawable.arrow_drop_down,
+            convertedDate,
         )
         publications.add(publication)
         Log.d("LOGCATPUBLICATIONSQL", publications.toString())
@@ -64,38 +82,20 @@ class MyPublication : AppCompatActivity() {
 
         val binding = ActivityMyPublicationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val publicationServiceFunctions = PublicationServiceFunction()
         val sharedPreferencesFuncs = SharedPreferencesFuncs()
-
         val token = sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()
+        val publicationServiceFunctions = PublicationServiceFunction()
+        publicationServiceFunctions.listpubsbyuser(this,token )
 
         val recyclerView = findViewById<RecyclerView>(R.id.my_publication_recyclerview)
 
         val feed = findViewById<TextView>(R.id.my_publication_feed)
         val featherPen = findViewById<ImageView>(R.id.my_publication_btn_feather)
 
-        ////
         val publicationList = listpubsbyuser(this) // Retrieve data from SQLite database
         val adapter = PublicationAdapter(publicationList) // Create adapter with the data
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
-        ////
-
-        /*
-        // Create a list of Publication objects
-        val publicationList: List<Publication> = listOf(
-            Publication(R.drawable.baseline_image_24, "User 1", "Tweet 1", R.drawable.baseline_gif_box_24, R.drawable.arrow_drop_down),
-            Publication(R.drawable.arrow_drop_down, "User 2", "Tweet 2", R.drawable.baseline_image_24, R.drawable.baseline_gif_box_24),
-            Publication(R.drawable.baseline_gif_box_24, "User 3", "Tweet 3", R.drawable.arrow_drop_down, R.drawable.baseline_image_24)
-        )
-
-        val publicationAdapter = PublicationAdapter(publicationList)
-
-        recyclerView.adapter = publicationAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-*/
 
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.my_publication_bottomNavigationView)
