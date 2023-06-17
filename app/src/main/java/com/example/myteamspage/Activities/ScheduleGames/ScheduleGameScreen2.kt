@@ -20,7 +20,7 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         val gameServiceFunctions = GameServiceFunctions()
         val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
-        val location = arrayOf("Braga", "Porto", "New York", "Berlin", "Vila Real")
+        val location = arrayOf("Braga", "OPorto", "New York", "Berlin", "Manchester")
 
         val pickDate = findViewById<TextView>(R.id.schedule_game2_date_field)
         val autoCompleteTeam: AutoCompleteTextView = findViewById(R.id.auto_complete_team)
@@ -79,17 +79,33 @@ class ScheduleGameScreen2 : AppCompatActivity() {
         val btn_finish = findViewById<Button>(R.id.schedule_game2_btn_finish)
 
         btn_finish.setOnClickListener {
-            /*gameServiceFunctions.scheduleGame(this
-                ,token
-                ,autoCompleteTeam.text.toString()
-                ,autoCompleteOpponent.text.toString()
-                ,autoCompleteLocation.text.toString()
-                ,pickDate.text.toString()
-            )*/
-            val intent = Intent(this@ScheduleGameScreen2, GameSchedule::class.java)
-            startActivity(intent)
-            finish()
+            gameServiceFunctions.scheduleGame(this,
+                token,
+                autoCompleteTeam.text.toString(),
+                autoCompleteOpponent.text.toString(),
+                autoCompleteLocation.text.toString(),
+                pickDate.text.toString()
+            ) { success ->
+                if (success) {
+                    val intent = Intent(this@ScheduleGameScreen2, GameSchedule::class.java)
+                    val gameAddress = autoCompleteLocation.text.toString()
+                    val team = autoCompleteTeam.text.toString()
+                    val opponent = autoCompleteOpponent.text.toString()
+
+                    intent.putExtra("gameAddress", gameAddress)
+                    intent.putExtra("gameTeam", team)
+                    intent.putExtra("gameOpponent", opponent)
+                    intent.putExtra("gameDate", pickDate.text.toString())
+
+                    startActivity(intent)
+                    finish()
+                }
+                else{
+                    Toast.makeText(this, "Check the values specified for the game scheduling!", Toast.LENGTH_LONG).show()
+                }
+            }
         }
+
 
         // val schedule_data = findViewById<TextView>(R.id.SELECTDATEFIELD)
         //val calendar_date = intent.getStringExtra("calendar_date")
@@ -115,5 +131,7 @@ class ScheduleGameScreen2 : AppCompatActivity() {
             finish()
         }
     }
+
+
 }
 

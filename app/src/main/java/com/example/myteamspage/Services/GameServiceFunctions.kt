@@ -18,7 +18,7 @@ class GameServiceFunctions {
     //val token = sharedPreferencesFuncs.loadData(context,"TOKEN_KEY").toString()
 
     fun createGameService(): GameService {
-        val BASE_URL = "http://192.168.1.68:7060/"
+        val BASE_URL = "http://192.168.1.7:7060/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -28,8 +28,8 @@ class GameServiceFunctions {
         return retrofit.create(GameService::class.java)
     }
 
-    fun scheduleGame(context: Context, token:String, idTeam1: String, idTeam2: String, location:String, gameDateTime: String)
-    {
+    fun scheduleGame(context: Context, token:String, idTeam1: String, idTeam2: String, location:String, gameDateTime: String, callback: (Boolean) -> Unit
+    ) {
         val service = createGameService()
 
         val requestBody = mapOf(
@@ -48,11 +48,11 @@ class GameServiceFunctions {
             ) {
                 if (response.isSuccessful) {
                     Log.d("GAMESCHEDULEOK", response.toString())
-                    val intent = Intent(context, ScheduleGame::class.java)
-                    context.startActivity(intent)
+                    callback(true)
                     Toast.makeText(context, "Game scheduled successfully", Toast.LENGTH_LONG).show()
                 } else {
                     Log.d("GAMESCHEDULERROR", response.toString())
+                    callback(false)
                     Toast.makeText(context, "Game scheduling failed", Toast.LENGTH_LONG).show()
                 }
             }
@@ -60,6 +60,7 @@ class GameServiceFunctions {
             override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
                 t.printStackTrace()
                 Log.d("GAMESCHEDULEONFAILURE", t.message.toString())
+                callback(false)
                 Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })

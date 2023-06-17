@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class TeamServiceFunctions {
 
     fun createTeamService(): TeamService {
-        val BASE_URL = "http://192.168.1.5:7080/"
+        val BASE_URL = "http://192.168.1.7:7080/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

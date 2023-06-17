@@ -6,9 +6,12 @@ import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.myteamspage.R
@@ -36,31 +39,22 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_schedule)
+        val teamName = intent.getStringExtra("gameTeam").toString().uppercase()
+        val opponentName = intent.getStringExtra("gameOpponent").toString().uppercase()
+        val dateGame = intent.getStringExtra("gameDate").toString()
 
-        val btn_ok = findViewById<Button>(R.id.bottom_btn_ok)
-
-        // Initialize the AutoCompleteTextView
-        autoCompleteTextView = findViewById(R.id.locationEditText)
-
-        // Set up autocomplete adapter with street/district data for Portugal
-        val streets = arrayOf("Rua das Palmeiras", "Rua dos Lírios", "Rua das Violetas")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, streets)
-        autoCompleteTextView.setAdapter(adapter)
-
-        searchButton = findViewById(R.id.searchButton)
-        searchButton.setOnClickListener {
-            searchLocation()
-        }
+        val matchName = findViewById<TextView>(R.id.my_teams).setText("$teamName - $opponentName")
+        val team1Img = findViewById<ImageView>(R.id.gameScheduleTeam1Img)
+        val team2Img = findViewById<ImageView>(R.id.gameScheduleTeam2Img)
+        val team1Name = findViewById<TextView>(R.id.gameScheduleTeam1Tv).setText(teamName)
+        val team2Name = findViewById<TextView>(R.id.gameScheduleTeam2Tv).setText(opponentName)
+        val gameDate = findViewById<TextView>(R.id.gameScheduleDateTv).setText(dateGame)
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        btn_ok.setOnClickListener {
-            val intent = Intent(this@GameSchedule, ScheduleGame::class.java)
-            startActivity(intent)
-            finish()
-        }
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -68,6 +62,9 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setOnMarkerClickListener(this)
         setUpMap()
+
+        val gameAddress = intent.getStringExtra("gameAddress").toString()
+        searchLocation(gameAddress)
 
         mMap.setOnMapLongClickListener { latLng ->
             mMap.addMarker(
@@ -97,18 +94,14 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
             if (location != null) {
                 lastLocation = location
-                val currentLatLng = LatLng(location.latitude, location.longitude)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
             }
         }
     }
 
-    private fun searchLocation() {
-        val enteredLocation = autoCompleteTextView.text.toString().trim()
-
-        if (enteredLocation.isNotEmpty()) {
+    private fun searchLocation(gameAddress: String) {
+        if (gameAddress.isNotEmpty()) {
             val geocoder = Geocoder(this)
-            val addressList = geocoder.getFromLocationName(enteredLocation, 1)
+            val addressList = geocoder.getFromLocationName(gameAddress, 1)
             if (addressList != null && addressList.isNotEmpty()) {
                 val address = addressList[0]
                 val latLng = LatLng(address.latitude, address.longitude)
@@ -118,7 +111,7 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                         .title(address.getAddressLine(0))
                         .snippet("Your marker snippet")
                 )
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
             } else {
                 Toast.makeText(this, "Location not found", Toast.LENGTH_SHORT).show()
             }
@@ -126,6 +119,7 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             Toast.makeText(this, "Please enter a location", Toast.LENGTH_SHORT).show()
         }
     }
+
 
     override fun onMarkerClick(marker: Marker): Boolean {
         // Handle marker click event here
