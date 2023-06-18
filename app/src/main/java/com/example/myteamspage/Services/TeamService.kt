@@ -10,5 +10,9 @@ interface TeamService {
 
     @GET("teams/listteamscaptain")
     fun getCaptainTeams(@Header("Authorization") token: String): Call<Map<String, List<String>>>
+
+
+    @GET("teams/listallopponents")
+    fun getOpponentTeams(@Header("Authorization") token: String): Call<Map<String, List<String>>>
 }
 

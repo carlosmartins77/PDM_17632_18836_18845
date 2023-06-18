@@ -56,7 +56,7 @@ class ScheduleGameScreen2 : AppCompatActivity() {
             }
         }
 
-        teamServiceFunctions.getAllTeams(token) { teams ->
+        teamServiceFunctions.getOpponentTeams(token) { teams ->
             val adapterOponent = ArrayAdapter(this, R.layout.dropdown_list_item, teams)
             autoCompleteOpponent.setAdapter(adapterOponent)
 
