@@ -10,9 +10,9 @@ import com.example.myteamspage.Classes.Teams
 import com.example.myteamspage.R
 
 class TeamsAdapter(private val teams: List<Teams>) :
-    RecyclerView.Adapter<TeamsAdapter.TweetViewHolder>() {
+    RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>() {
 
-        class TweetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        class TeamsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val team1: ImageView = itemView.findViewById(R.id.idteam1)
             val team2: ImageView = itemView.findViewById(R.id.idteam2)
             val date: TextView = itemView.findViewById(R.id.dateText)
@@ -21,20 +21,20 @@ class TeamsAdapter(private val teams: List<Teams>) :
             val location: TextView = itemView.findViewById(R.id.locationText)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TeamsViewHolder {
             val itemView =
                 LayoutInflater.from(parent.context).inflate(R.layout.game_list_of_teams, parent, false)
-            return TweetViewHolder(itemView)
+            return TeamsViewHolder(itemView)
         }
 
-        override fun onBindViewHolder(holder: TweetViewHolder, position: Int) {
-            val currentTweet = teams[position]
-            holder.team1.setImageResource(R.drawable.baseline_image_24)
-            holder.team2.setImageResource(R.drawable.baseline_image_24)
-            holder.date.text = currentTweet.gameDatTime
-            holder.idTeam1.text = currentTweet.idTeam1
-            holder.idTeam2.text = currentTweet.idTeam2
-            holder.location.text = currentTweet.location
+        override fun onBindViewHolder(holder: TeamsViewHolder, position: Int) {
+            val currentGame = teams[position]
+            holder.team1.setImageResource(R.drawable.arsenal)
+            holder.team2.setImageResource(R.drawable.realmadrid)
+            holder.date.text = currentGame.gameDateTime
+            holder.idTeam1.text = currentGame.idTeam1
+            holder.idTeam2.text = currentGame.idTeam2
+            holder.location.text = currentGame.location
         }
 
         override fun getItemCount() = teams.size

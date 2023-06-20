@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
+import com.example.myteamspage.Activities.TeamsHome.TeamsHomePage
 import com.example.myteamspage.Adapters.Publications.PublicationFeedAdapter
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
@@ -43,7 +44,7 @@ class PublicationScreen : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_teams -> {
-                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    startActivity(Intent(applicationContext, TeamsHomePage::class.java))
                     finish()
                     true
                 }

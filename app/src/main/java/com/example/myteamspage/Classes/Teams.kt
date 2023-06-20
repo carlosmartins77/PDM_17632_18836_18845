@@ -6,7 +6,7 @@ data class Teams(
     val idTeam1: String,
     val idTeam2: String,
     val location: String,
-    val gameDatTime: String,
+    val gameDateTime: String,
     val status: String,
     val __v: String
 

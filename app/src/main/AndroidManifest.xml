@@ -18,13 +18,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Activities.TeamsHomePage"
+            android:name=".Activities.TeamsHome.TeamsHomePage"
             android:exported="false" />
         <activity
             android:name=".Activities.ScheduleGames.GameSchedule"
-            android:exported="false" />
-        <activity
-            android:name=".Activities.TeamsHome.TeamsScreen"
             android:exported="false" />
         <activity
             android:name=".Activities.MyPublication"
@@ -98,7 +95,6 @@
         <activity
             android:name=".Activities.HomePageActivity"
             android:exported="false" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDCUhrARFOnjqzk9OG6eLFsSv8lbq9OMWg" />

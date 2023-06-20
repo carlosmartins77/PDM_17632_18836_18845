@@ -1,22 +1,17 @@
-package com.example.myteamspage.Activities
+package com.example.myteamspage.Activities.TeamsHome
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
+import com.example.myteamspage.Activities.PublicationScreen
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
-import com.example.myteamspage.Adapters.Publications.PublicationFeedAdapter
 import com.example.myteamspage.Adapters.Teams.TeamsAdapter
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.GameServiceFunctions
-import com.example.myteamspage.Services.TeamServiceFunctions
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.databinding.ActivityTeamsPageBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -25,8 +20,6 @@ class TeamsHomePage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teams_home_page)
-
-        try {
 
             val binding = ActivityTeamsPageBinding.inflate(layoutInflater)
             setContentView(binding.root)
@@ -39,9 +32,8 @@ class TeamsHomePage : AppCompatActivity() {
             recyclerView.layoutManager = LinearLayoutManager(this)
 
             gameServiceFunctions.listAllUserGames(this, token) { games ->
-                Log.d("TEAMSHOMEPAGE", "ENTROU")
-                // val adapter = TeamsAdapter(games)
-                // recyclerView.adapter = adapter
+                val adapter = TeamsAdapter(games)
+                recyclerView.adapter = adapter
             }
 
             val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
@@ -67,10 +59,5 @@ class TeamsHomePage : AppCompatActivity() {
                     else -> false
                 }
             }
-
-        }catch (e: NullPointerException) {
-            // Handle the exception
-           Log.d("An error occurred:", "${e.message}")
-        }
     }
 }
