@@ -20,7 +20,7 @@ class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.1.68:3000/"
+        val BASE_URL = "http://192.168.1.6:3000/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

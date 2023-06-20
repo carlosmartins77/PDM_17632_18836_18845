@@ -13,7 +13,7 @@ import com.example.myteamspage.Adapters.Teams.TeamsAdapter
 import com.example.myteamspage.R
 import com.example.myteamspage.Services.GameServiceFunctions
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
-import com.example.myteamspage.databinding.ActivityTeamsPageBinding
+import com.example.myteamspage.databinding.ActivityTeamsHomePageBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TeamsHomePage : AppCompatActivity() {
@@ -21,19 +21,18 @@ class TeamsHomePage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teams_home_page)
 
-            val binding = ActivityTeamsPageBinding.inflate(layoutInflater)
+            val binding = ActivityTeamsHomePageBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
             val sharedPreferencesFuncs = SharedPreferencesFuncs()
             val gameServiceFunctions = GameServiceFunctions()
             val token = sharedPreferencesFuncs.loadData(this, "TOKEN_KEY").toString()
 
-            val recyclerView = findViewById<RecyclerView>(R.id.rvListTeamsCaptain)
-            recyclerView.layoutManager = LinearLayoutManager(this)
+            binding.rvListTeamsCaptain.layoutManager = LinearLayoutManager(this)
 
             gameServiceFunctions.listAllUserGames(this, token) { games ->
                 val adapter = TeamsAdapter(games)
-                recyclerView.adapter = adapter
+                binding.rvListTeamsCaptain.adapter = adapter
             }
 
             val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)

@@ -3,94 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/game_list_item_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <ImageView
+        android:id="@+id/idteam1"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/idteam1"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/baseline_person_24" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
-        <LinearLayout
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/idteam1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Team1"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dateText"
+        app:layout_constraintStart_toEndOf="@+id/idteam1"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingRight="20dp">
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Location"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/idteam2Text"
+        app:layout_constraintStart_toEndOf="@+id/idteam1Text"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/idteam1Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Team1"
-                    android:textAlignment="center"
-                    android:textSize="15sp" />
+    <TextView
+        android:id="@+id/idteam2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Team2"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idteam2"
+        app:layout_constraintStart_toEndOf="@+id/dateText"
+        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/locationText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Location"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Date"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idteam2"
+        app:layout_constraintStart_toEndOf="@+id/idteam1"
+        app:layout_constraintTop_toBottomOf="@+id/locationText" />
 
-                <TextView
-                    android:id="@+id/idteam2Text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Team2"
-                    android:textAlignment="center"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/game_list_dates"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingRight="20dp">
-
-                <TextView
-                    android:id="@+id/dateText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Date"
-                    android:textAlignment="center"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/idteam2"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/baseline_person_24" />
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/idteam2"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
