@@ -135,10 +135,4 @@ class PublicationServiceFunction {
             }
         })
     }
-
-
-
-
-
-
 }

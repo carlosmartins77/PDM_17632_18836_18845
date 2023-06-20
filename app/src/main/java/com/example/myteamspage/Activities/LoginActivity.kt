@@ -43,13 +43,12 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, ForgotPWD::class.java)
             startActivity(intent)
         }
-
         //endregion
 
         //region Login
         loginBtn.setOnClickListener {
 
-            //val intent = Intent(this@LoginActivity, ScheduleGame::class.java)
+            //val intent = Intent(this@LoginActivity, TeamsHomePage::class.java)
             //startActivity(intent)
 
             val email = emailEt.text.toString()

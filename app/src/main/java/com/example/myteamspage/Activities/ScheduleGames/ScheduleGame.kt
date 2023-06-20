@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
 import com.example.myteamspage.Activities.PublicationScreen
 import com.example.myteamspage.Activities.TeamsHome.TeamsScreen
+import com.example.myteamspage.Activities.TeamsHomePage
 import com.example.myteamspage.Adapters.MyAdapterRec
 import com.example.myteamspage.Classes.Games
 import com.example.myteamspage.R
@@ -61,7 +62,7 @@ class ScheduleGame : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_teams ->{
-                    startActivity(Intent(applicationContext, TeamsScreen::class.java))
+                    startActivity(Intent(applicationContext, TeamsHomePage::class.java))
                     finish()
                     true
                 }

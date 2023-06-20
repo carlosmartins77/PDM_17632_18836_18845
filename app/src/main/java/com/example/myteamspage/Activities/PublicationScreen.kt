@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Activities.Account.AccountOptions
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
-import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Adapters.Publications.PublicationFeedAdapter
-import com.example.myteamspage.Classes.PublicationResponse
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityPublicationScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

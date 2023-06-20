@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myteamspage.Adapters.PublicationAdapter
 import com.example.myteamspage.Classes.PublicationImage
 import com.example.myteamspage.R
 

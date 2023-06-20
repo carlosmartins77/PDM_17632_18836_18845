@@ -5,6 +5,10 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
+import com.example.myteamspage.Classes.PublicationImage
+import com.example.myteamspage.Classes.PublicationResponse
+import com.example.myteamspage.Classes.Teams
+import com.example.myteamspage.Classes.TeamsResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +22,7 @@ class GameServiceFunctions {
     //val token = sharedPreferencesFuncs.loadData(context,"TOKEN_KEY").toString()
 
     fun createGameService(): GameService {
-        val BASE_URL = "http://192.168.1.7:7060/"
+        val BASE_URL = "http://192.168.1.68:7060/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -66,4 +70,28 @@ class GameServiceFunctions {
         })
     }
 
+    fun listAllUserGames(context: Context, token: String, callback: (List<Teams>) -> Unit) {
+        val service = createGameService()
+        val call = service.listAllUserGames(token)
+
+        call.enqueue(object : Callback<TeamsResponse> {
+            override fun onResponse(call: Call<TeamsResponse>, response: Response<TeamsResponse>) {
+                if (response.isSuccessful) {
+                    val gameResponse = response.body()?.message
+                    Log.d("OkGetAll", gameResponse.toString())
+                    if (gameResponse != null) {
+                        callback(gameResponse)
+                    }
+                } else {
+                    Log.d("ErrorGetAll", response.toString())
+                    callback(emptyList())
+                }
+            }
+
+            override fun onFailure(call: Call<TeamsResponse>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("FAILUREGETGAMES", t.message.toString())
+            }
+        })
+    }
 }
