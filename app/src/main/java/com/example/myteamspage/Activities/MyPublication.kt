@@ -19,23 +19,13 @@ import com.example.myteamspage.Services.PublicationServiceFunction
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.databinding.ActivityMyPublicationBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
-
-import java.text.SimpleDateFormat
-import java.util.*
-
-fun convertDateFormat(dateString: String): String {
-    val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.getDefault())
-    val outputFormat = SimpleDateFormat("dd--MM-yyyy", Locale.getDefault())
-    val date = inputFormat.parse(dateString)
-    return outputFormat.format(date!!)
-}
-
+import com.example.myteamspage.Utils.ConvertDatetimeFormat
 
 
 fun listpubsbyuser(context: Context): List<Publication> {
     val databaseHelper = SQLitePublication(context)
     val db = databaseHelper.readableDatabase
+    val convertDatetimeFormat = ConvertDatetimeFormat()
 
     val columns = arrayOf("COLUMN_USERNAME", "COLUMN_CONTENT", "COLUMN_DATE")
     val cursor = db.query("TABLE_NAME", columns, null, null, null, null, null) // publications
@@ -51,10 +41,9 @@ fun listpubsbyuser(context: Context): List<Publication> {
         val content = if (columnIndexContent != -1) cursor.getString(columnIndexContent) else ""
         val date = if (columnIndexDate != -1) cursor.getString(columnIndexDate) else ""
 
-
         // Usage example
         val inputDate = date
-        val convertedDate = convertDateFormat(inputDate)
+        val convertedDate = convertDatetimeFormat.convertDateFormat(inputDate)
 
         val publication = Publication(
             R.drawable.baseline_image_24,

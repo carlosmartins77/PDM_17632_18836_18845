@@ -3,15 +3,17 @@ package com.example.myteamspage.Adapters.Teams
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.textclassifier.ConversationAction
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myteamspage.Classes.Teams
 import com.example.myteamspage.R
+import com.example.myteamspage.Utils.ConvertDatetimeFormat
 
 class TeamsAdapter(private val teams: List<Teams>) :
     RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder>() {
-
+    val convertDatetimeFormat = ConvertDatetimeFormat()
         class TeamsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             val team1: ImageView = itemView.findViewById(R.id.idteam1)
             val team2: ImageView = itemView.findViewById(R.id.idteam2)
@@ -31,7 +33,7 @@ class TeamsAdapter(private val teams: List<Teams>) :
             val currentGame = teams[position]
             holder.team1.setImageResource(R.drawable.arsenal)
             holder.team2.setImageResource(R.drawable.realmadrid)
-            holder.date.text = currentGame.gameDateTime
+            holder.date.text = convertDatetimeFormat.convertDateFormat(currentGame.gameDateTime)
             holder.idTeam1.text = currentGame.idTeam1
             holder.idTeam2.text = currentGame.idTeam2
             holder.location.text = currentGame.location
