@@ -15,6 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
+import com.example.myteamspage.Activities.TeamsHome.TeamsHomePage
 
 class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
@@ -210,7 +211,7 @@ class UserServiceFunctions {
                     sharedPreferencesFuncs.saveData(context, "TOKEN_KEY", token.toString())
                     sharedPreferencesFuncs.saveData(context, "USERNAME_KEY", email.toString())
                     //region Start Schedule Game Activity
-                    val intent = Intent(context, ScheduleGame::class.java)
+                    val intent = Intent(context, TeamsHomePage::class.java)
                     context.startActivity(intent)
                     //endregion
 
