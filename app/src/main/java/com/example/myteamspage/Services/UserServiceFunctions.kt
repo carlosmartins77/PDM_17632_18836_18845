@@ -5,6 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import com.example.myteamspage.Activities.*
+import com.example.myteamspage.Activities.Account.PersonalInfo
 import com.example.myteamspage.Activities.ForgotPassword.ConfirmCode
 import com.example.myteamspage.Activities.ForgotPassword.CreateNewPassword
 import com.example.myteamspage.UserService
@@ -21,7 +22,9 @@ class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.27.51:3000/"
+        //val ipAddress = Logo_KickOff.ipAddress
+        val BASE_URL = "http://192.168.1.2:3000/"
+        //Log.d("IPADDRESSLOG", ipAddress)
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -228,4 +231,75 @@ class UserServiceFunctions {
             }
         })
     }
+
+    fun getUserInformation(context: Context, email: String) {
+    val service = createUserService()
+
+    val call = service.getUserInformation(email)
+
+    call.enqueue(object : Callback<Map<String, Map<String, Any>>> {
+        override fun onResponse(call: Call<Map<String, Map<String, Any>>>, response: Response<Map<String, Map<String, Any>>>) {
+            if (response.isSuccessful) {
+                val userResponse = response.body()?.get("message")
+                    val fullName = userResponse?.get("fullname").toString()
+                    val email = userResponse?.get("email").toString()
+                    val phoneNumber = userResponse?.get("phonenumber").toString()
+                    val birthDate = userResponse?.get("birthdate").toString()
+                    val country = userResponse?.get("country").toString()
+
+                    if(fullName.isNotEmpty() && email.isNotEmpty()) {
+                        sharedPreferencesFuncs.saveData(context, "USER_FULLNAME", fullName)
+                        sharedPreferencesFuncs.saveData(context, "USER_EMAIL", email)
+                        sharedPreferencesFuncs.saveData(context, "USER_PHONENUMBER", phoneNumber)
+                        sharedPreferencesFuncs.saveData(context, "USER_BIRTHDATE", birthDate)
+                        sharedPreferencesFuncs.saveData(context, "USER_COUNTRY", country)
+                    }
+                    else {
+                        Toast.makeText(context, "Couldn't obtain user info", Toast.LENGTH_LONG).show()
+                    }
+
+            } else {
+                Toast.makeText(context, "Error processing request", Toast.LENGTH_LONG).show()
+
+            }
+        }
+
+        override fun onFailure(call: Call<Map<String, Map<String, Any>>>, t: Throwable) {
+            t.printStackTrace()
+            Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+
+        }
+    })
+}
+
+    fun getEmailByToken(context: Context, token: String){
+
+        val service = createUserService()
+
+        val call = service.getEmailByToken(token)
+
+        call.enqueue(object : Callback<Map<String, String>> {
+            override fun onResponse(
+                call: Call<Map<String, String>>,
+                response: Response<Map<String, String>>
+            ) {
+                if (response.isSuccessful) {
+                    val email = response.body()?.get("message").toString()
+                    Log.d("emailtokentoken", email)
+
+                    sharedPreferencesFuncs.saveData(context, "USER_EMAIL_BY_TKN", email)
+                } else {
+                    Log.d("responsecodenestjs", response.toString())
+                    Toast.makeText(context, "Could not get email", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+                t.printStackTrace()
+                Log.d("GetEmailByTokenError", t.message.toString())
+                Toast.makeText(context, "Error occurred: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
 }

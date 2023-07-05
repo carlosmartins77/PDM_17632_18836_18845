@@ -20,7 +20,7 @@ class ComposeTweet : AppCompatActivity() {
         val sharedPreferencesFuncs = SharedPreferencesFuncs()
         val email = sharedPreferencesFuncs.loadData(this,"USERNAME_KEY").toString()
         val token = sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()
-        val editText = findViewById<EditText>(R.id.editProfile)
+        val editText = findViewById<EditText>(R.id.compose_tweet_content)
 
         val arrowBack = findViewById<ImageView>(R.id.compose_tweet_arrow_icon)
         val btn_publish = findViewById<Button>(R.id.compose_pub_btn_publish)
@@ -32,11 +32,11 @@ class ComposeTweet : AppCompatActivity() {
         }
 
         btn_publish.setOnClickListener {
-            Log.d("ComposeTwett", email.toString())
+            Log.d("ComposeTweet", email.toString())
             val inputText = editText.text.toString()
-            Log.d("ComposeTwett", inputText.toString())
-            //pubServiceFunctions.postPublication(this, token, email , inputText)
-            pubServiceFunctions.listpubsbyuser(this, token)
+            Log.d("ComposeTweet", inputText.toString())
+            pubServiceFunctions.postPublication(this, token, email , inputText)
+            //pubServiceFunctions.listpubsbyuser(this, token)
         }
     }
 }

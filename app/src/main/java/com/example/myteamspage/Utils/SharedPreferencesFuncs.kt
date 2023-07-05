@@ -8,7 +8,13 @@ class SharedPreferencesFuncs {
         val sharedPreferences = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
-        editor.putString(key, "Bearer $value")
+        if(key.startsWith("TOKEN"))
+        {
+            editor.putString(key, "Bearer $value")
+        }
+        else {
+            editor.putString(key, value)
+        }
         editor.apply()
 
         Toast.makeText(context, "data saved", Toast.LENGTH_LONG).show()

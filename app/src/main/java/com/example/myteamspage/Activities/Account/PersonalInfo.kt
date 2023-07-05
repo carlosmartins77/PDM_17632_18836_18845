@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
@@ -14,18 +15,42 @@ import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.json.JSONObject
 import java.util.*
+import com.example.myteamspage.Services.UserServiceFunctions
+import com.example.myteamspage.Utils.SharedPreferencesFuncs
 
 class PersonalInfo : AppCompatActivity() {
-    private lateinit var binding : ActivityPersonalInfoBinding
+    //private lateinit var binding : ActivityPersonalInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
-        binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        val userServiceFunctions = UserServiceFunctions()
+        val sharedPreferencesFuncs = SharedPreferencesFuncs()
+
+        userServiceFunctions.getEmailByToken(this, sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()).toString()
+        val emailTkn = sharedPreferencesFuncs.loadData(this, "USER_EMAIL_BY_TKN").toString()
+        userServiceFunctions.getUserInformation(this, emailTkn)
+
+        val fullName = sharedPreferencesFuncs.loadData(this,  "USER_FULLNAME").toString()
+        val email = sharedPreferencesFuncs.loadData(this,  "USER_EMAIL").toString()
+        val phoneNumber = sharedPreferencesFuncs.loadData(this,  "USER_PHONENUMBER").toString()
+        val birthDate = sharedPreferencesFuncs.loadData(this,  "USER_BIRTHDATE").toString()
+        val country = sharedPreferencesFuncs.loadData(this,  "USER_COUNTRY").toString()
+
+
+        Log.d("fullNameluserinfo", fullName)
+        Log.d("emailuserinfo", email)
+        Log.d("phoneNumberuserinfo", phoneNumber)
+        Log.d("birthDateuserinfo", birthDate)
+        Log.d("countryuserinfo", country)
+
+
+        //binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
 
         val pickDate = findViewById<EditText>(R.id.birth_Date_field)
-        val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
+        //val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
 
         pickDate.setOnClickListener{
             showDatePicker(pickDate)
@@ -55,6 +80,8 @@ class PersonalInfo : AppCompatActivity() {
             }
         }
 
+
+        /*
         val sharedPreferences = getSharedPreferences(this.resources.getString(R.string.app_name), Context.MODE_PRIVATE)
         val message = JSONObject(sharedPreferences.getString("CountryList","{}"))
         val countries = jsonObjectToList(message)
@@ -66,6 +93,7 @@ class PersonalInfo : AppCompatActivity() {
             val selectedItem = AdapterView.getItemAtPosition(i)
             Toast.makeText(this, "Item: $selectedItem", Toast.LENGTH_SHORT).show()
         }
+        */
     }
 
     private fun showDatePicker(editTextDate: EditText) {
