@@ -28,122 +28,136 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/personalInfoLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/password_changed" />
+        app:srcCompat="@drawable/baseline_person_24" />
 
     <TextView
-        android:id="@+id/complete_your_profile_full_name"
-        android:layout_width="350dp"
+        android:id="@+id/personalInfoFullNameTv"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Full Name"
         android:textColor="@color/black"
-        android:layout_marginLeft="20dp"
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/userImageView"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20sp"
-        >
+        android:layout_marginTop="20dp">
     </TextView>
 
-    <EditText
-        android:id="@+id/complete_your_profile_full_name_field"
-        android:layout_width="350dp"
+    <TextView
+        android:id="@+id/personalInfoFullNameTv_value"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
+        android:text="Username"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_full_name"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_full_name"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoFullNameTv"
+        app:layout_constraintStart_toStartOf="@id/personalInfoFullNameTv"
         android:contentDescription="Full Name input field">
-    </EditText>
+    </TextView>
 
     <TextView
-        android:id="@+id/complete_your_profile_phone_number"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalInfoEmailTv"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoFullNameTv_value"
+        app:layout_constraintStart_toStartOf="@id/personalInfoFullNameTv_value"
+        android:layout_marginTop="20dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/personalInfoEmailTv_value"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Email@"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoEmailTv"
+        app:layout_constraintStart_toStartOf="@id/personalInfoEmailTv"
+        android:contentDescription="Full Name input field">
+    </TextView>
+
+    <TextView
+        android:id="@+id/personalInfoPhoneNumberTv"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Phone Number"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_full_name_field"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_full_name_field"
-        android:layout_marginTop="20sp">
+        app:layout_constraintTop_toBottomOf="@id/personalInfoEmailTv_value"
+        app:layout_constraintStart_toStartOf="@id/personalInfoEmailTv_value"
+        android:layout_marginTop="20dp">
     </TextView>
 
-    <EditText
-        android:id="@+id/complete_your_profile_phone_number_field"
-        android:layout_width="350dp"
+    <TextView
+        android:id="@+id/personalInfoPhoneNumberTv_value"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_phone_number"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_phone_number"
+        android:text="Phonenumber"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoPhoneNumberTv"
+        app:layout_constraintStart_toStartOf="@id/personalInfoPhoneNumberTv"
         android:contentDescription="Phone Number input field">
-    </EditText>
+    </TextView>
 
     <TextView
-        android:id="@+id/complete_your_profile__date_of_birth"
-        android:layout_marginTop="20sp"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalInfoBirthDateTv"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Date of Birth"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/complete_your_profile_phone_number_field"
-        app:layout_constraintStart_toStartOf="@id/complete_your_profile_phone_number_field">
+        app:layout_constraintTop_toBottomOf="@id/personalInfoPhoneNumberTv_value"
+        app:layout_constraintStart_toStartOf="@id/personalInfoPhoneNumberTv_value">
     </TextView>
 
-    <LinearLayout
-        android:id="@+id/birth_Date"
+    <TextView
+        android:id="@+id/personalInfoBirthDateTv_value"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/complete_your_profile__date_of_birth">
-
-        <EditText
-            android:id="@+id/birth_Date_field"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:drawableRight="@drawable/calendar"
-            android:contentDescription="Date of birth input field"
-            app:layout_constraintTop_toBottomOf="@id/complete_your_profile__date_of_birth"
-            app:layout_constraintStart_toStartOf="@id/complete_your_profile__date_of_birth">
-        </EditText>
-    </LinearLayout>
+        android:textSize="20sp"
+        android:text="Birthdate"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoBirthDateTv"
+        app:layout_constraintStart_toStartOf="@id/personalInfoBirthDateTv">
+    </TextView>
 
     <TextView
-        android:id="@+id/complete_your_profile_country"
-        android:layout_marginTop="20sp"
-        android:layout_width="wrap_content"
+        android:id="@+id/personalInfoCountryTv"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:text="Country"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/birth_Date"
-        app:layout_constraintStart_toStartOf="@id/birth_Date">
+        app:layout_constraintTop_toBottomOf="@id/personalInfoBirthDateTv_value"
+        app:layout_constraintStart_toStartOf="@id/personalInfoBirthDateTv_value">
     </TextView>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
+        android:id="@+id/personalInfoCountryTv_value"
         android:layout_width="match_parent"
-        android:id="@+id/select_team"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Select Country"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/complete_your_profile_country"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        app:layout_constraintEnd_toEndOf="parent">
-        <AutoCompleteTextView
-            android:id="@+id/auto_complete_country"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none"
-            android:importantForAccessibility="yes"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:textSize="20sp"
+        android:text="Country"
+        app:layout_constraintTop_toBottomOf="@id/personalInfoCountryTv"
+        app:layout_constraintStart_toStartOf="@id/personalInfoCountryTv">
+    </TextView>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_margin="20dp"

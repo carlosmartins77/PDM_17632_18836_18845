@@ -284,10 +284,12 @@ class UserServiceFunctions {
                 response: Response<Map<String, String>>
             ) {
                 if (response.isSuccessful) {
-                    val email = response.body()?.get("message").toString()
-                    Log.d("emailtokentoken", email)
+                    val email = response.body()?.get("email").toString()
+                    val fullName = response.body()?.get("fullname").toString()
+                    Log.d("fullnameltokentoken", fullName)
 
                     sharedPreferencesFuncs.saveData(context, "USER_EMAIL_BY_TKN", email)
+                    sharedPreferencesFuncs.saveData(context, "USER_FULLNAME_BY_TKN", fullName)
                 } else {
                     Log.d("responsecodenestjs", response.toString())
                     Toast.makeText(context, "Could not get email", Toast.LENGTH_LONG).show()

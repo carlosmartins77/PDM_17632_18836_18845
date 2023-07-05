@@ -18,6 +18,8 @@ import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
 import com.example.myteamspage.Adapters.Account.AdapterRec
 import com.example.myteamspage.Classes.Account
 import com.example.myteamspage.R
+import com.example.myteamspage.Services.UserServiceFunctions
+import com.example.myteamspage.Utils.SharedPreferencesFuncs
 import com.example.myteamspage.databinding.ActivityAccountOptionsBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -26,6 +28,7 @@ class AccountOptions : AppCompatActivity() {
         const val CUSTOM_ACTION = "com.example.broadcast.CUSTOM_ACTION"
         const val EXTRA_MESSAGE = "com.example.broadcast.EXTRA_MESSAGE"
     }
+    val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -38,6 +41,11 @@ class AccountOptions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_options)
+
+
+        val userServiceFunctions = UserServiceFunctions()
+        userServiceFunctions.getEmailByToken(this, sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()).toString()
+
 
         val binding = ActivityAccountOptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -67,7 +75,7 @@ class AccountOptions : AppCompatActivity() {
             }
         }
 
-        addUserInformation()
+        addUserInformation(this)
         addDataToRecycleView()
     }
 
@@ -82,11 +90,11 @@ class AccountOptions : AppCompatActivity() {
         unregisterReceiver(broadcastReceiver)
     }
 
-    fun addUserInformation(){
+    fun addUserInformation(context:Context){
         val userName = findViewById<TextView>(R.id.usernameLabel)
         val userEmail = findViewById<TextView>(R.id.userEmailLabel)
-        userName.text = "Ricardo Azevedo"
-        userEmail.text = "ricardo@gmail.com"
+        userEmail.text = sharedPreferencesFuncs.loadData(this,"USER_EMAIL_BY_TKN")
+        userName.text = sharedPreferencesFuncs.loadData(this,"USER_FULLNAME_BY_TKN")
     }
 
     fun addDataToRecycleView(){

@@ -25,10 +25,9 @@ class PersonalInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_info)
 
-        val userServiceFunctions = UserServiceFunctions()
         val sharedPreferencesFuncs = SharedPreferencesFuncs()
+        val userServiceFunctions = UserServiceFunctions()
 
-        userServiceFunctions.getEmailByToken(this, sharedPreferencesFuncs.loadData(this,"TOKEN_KEY").toString()).toString()
         val emailTkn = sharedPreferencesFuncs.loadData(this, "USER_EMAIL_BY_TKN").toString()
         userServiceFunctions.getUserInformation(this, emailTkn)
 
@@ -38,6 +37,11 @@ class PersonalInfo : AppCompatActivity() {
         val birthDate = sharedPreferencesFuncs.loadData(this,  "USER_BIRTHDATE").toString()
         val country = sharedPreferencesFuncs.loadData(this,  "USER_COUNTRY").toString()
 
+        val fullNameTv = findViewById<TextView>(R.id.personalInfoFullNameTv_value).setText(fullName)
+        val emailTv = findViewById<TextView>(R.id.personalInfoEmailTv_value).setText(email)
+        val phoneNumberTv = findViewById<TextView>(R.id.personalInfoPhoneNumberTv_value).setText(phoneNumber)
+        val birthDateTv = findViewById<TextView>(R.id.personalInfoBirthDateTv_value).setText(birthDate)
+        val countryTv = findViewById<TextView>(R.id.personalInfoCountryTv_value).setText(country)
 
         Log.d("fullNameluserinfo", fullName)
         Log.d("emailuserinfo", email)
@@ -49,12 +53,7 @@ class PersonalInfo : AppCompatActivity() {
         //binding = ActivityPersonalInfoBinding.inflate(layoutInflater)
         //setContentView(binding.root)
 
-        val pickDate = findViewById<EditText>(R.id.birth_Date_field)
-        //val autoCompleteCountry: AutoCompleteTextView = findViewById(R.id.auto_complete_country)
 
-        pickDate.setOnClickListener{
-            showDatePicker(pickDate)
-        }
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
         bottomNavigationView.selectedItemId = R.id.bottom_nav_settings
