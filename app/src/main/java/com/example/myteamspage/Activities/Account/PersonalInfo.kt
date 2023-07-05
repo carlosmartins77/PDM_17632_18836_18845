@@ -17,6 +17,7 @@ import org.json.JSONObject
 import java.util.*
 import com.example.myteamspage.Services.UserServiceFunctions
 import com.example.myteamspage.Utils.SharedPreferencesFuncs
+import com.example.myteamspage.Utils.ConvertDatetimeFormat
 
 class PersonalInfo : AppCompatActivity() {
     //private lateinit var binding : ActivityPersonalInfoBinding
@@ -27,6 +28,7 @@ class PersonalInfo : AppCompatActivity() {
 
         val sharedPreferencesFuncs = SharedPreferencesFuncs()
         val userServiceFunctions = UserServiceFunctions()
+        val convertDatetimeFormat = ConvertDatetimeFormat()
 
         val emailTkn = sharedPreferencesFuncs.loadData(this, "USER_EMAIL_BY_TKN").toString()
         userServiceFunctions.getUserInformation(this, emailTkn)
@@ -34,7 +36,8 @@ class PersonalInfo : AppCompatActivity() {
         val fullName = sharedPreferencesFuncs.loadData(this,  "USER_FULLNAME").toString()
         val email = sharedPreferencesFuncs.loadData(this,  "USER_EMAIL").toString()
         val phoneNumber = sharedPreferencesFuncs.loadData(this,  "USER_PHONENUMBER").toString()
-        val birthDate = sharedPreferencesFuncs.loadData(this,  "USER_BIRTHDATE").toString()
+        val birthDateBad = sharedPreferencesFuncs.loadData(this,  "USER_BIRTHDATE").toString()
+        val birthDate = convertDatetimeFormat.convertMongoDBDateFormat(birthDateBad)
         val country = sharedPreferencesFuncs.loadData(this,  "USER_COUNTRY").toString()
 
         val fullNameTv = findViewById<TextView>(R.id.personalInfoFullNameTv_value).setText(fullName)
