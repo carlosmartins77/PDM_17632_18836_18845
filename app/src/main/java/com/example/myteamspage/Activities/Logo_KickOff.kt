@@ -2,8 +2,10 @@ package com.example.myteamspage.Activities
 
 import android.content.Context
 import android.content.Intent
+import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.Formatter
 import android.widget.Button
 import android.widget.Toast
 import com.example.myteamspage.Activities.CreateAccount.Create_your_team_register
@@ -12,8 +14,15 @@ import com.example.myteamspage.Services.UserServiceFunctions
 import com.example.myteamspage.Utils.InternetConnectivity
 
 class Logo_KickOff : AppCompatActivity() {
+    companion object {
+        lateinit var ipAddress: String
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val wifiManager = this.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        ipAddress = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
+
         setContentView(R.layout.activity_logo_kick_off)
 
         val getStarted = findViewById<Button>(R.id.logo_kick_off_button1)

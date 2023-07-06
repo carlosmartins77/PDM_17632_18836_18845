@@ -1,6 +1,9 @@
 package com.example.myteamspage.Adapters.Account
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -16,9 +19,12 @@ class AdapterRecViewHolder(inflater: LayoutInflater, val parent: ViewGroup) :
     private var iv: ImageView? = itemView.findViewById(R.id.layout_item_photo_iv)
 
     fun bindData(text: String, colorResource: Int) {
+        Log.d("bindDataMister", "bindData called for text: $text")
         tv?.text = text
+        Log.d("texttvtvtv", text)
         iv?.setBackgroundResource(colorResource)
         itemView.setOnClickListener {
+            Log.d("setOnClickListenerMister", "setOnClickListener executed for text: $text")
             val context = parent.context.applicationContext
             if (text == "Personal Info"){
                 val intent = Intent(context, PersonalInfo::class.java)

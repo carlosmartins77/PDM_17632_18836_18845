@@ -22,7 +22,7 @@ class PublicationServiceFunction {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
 
     private fun createPublicationService(): PublicationService {
-        val BASE_URL = "http://192.168.1.2:7070/"
+        val BASE_URL = "http://192.168.1.4:7070/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

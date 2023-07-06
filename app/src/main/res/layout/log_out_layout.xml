@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/pwdSuccessfullyBtn"
-            android:layout_width="130dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:textAllCaps="false"
             android:layout_marginRight="50dp"
@@ -61,7 +61,7 @@
 
         <Button
             android:id="@+id/pwdCancelBtn"
-            android:layout_width="130dp"
+            android:layout_width="80dp"
             android:layout_height="40dp"
             android:textAllCaps="false"
             android:textStyle="bold"
