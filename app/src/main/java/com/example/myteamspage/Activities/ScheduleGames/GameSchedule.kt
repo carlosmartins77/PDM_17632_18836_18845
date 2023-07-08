@@ -43,12 +43,12 @@ class GameSchedule : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val opponentName = intent.getStringExtra("gameOpponent").toString().uppercase()
         val dateGame = intent.getStringExtra("gameDate").toString()
 
-        val matchName = findViewById<TextView>(R.id.my_teams).setText("$teamName - $opponentName")
-        val team1Img = findViewById<ImageView>(R.id.gameScheduleTeam1Img)
-        val team2Img = findViewById<ImageView>(R.id.gameScheduleTeam2Img)
-        val team1Name = findViewById<TextView>(R.id.gameScheduleTeam1Tv).setText(teamName)
-        val team2Name = findViewById<TextView>(R.id.gameScheduleTeam2Tv).setText(opponentName)
-        val gameDate = findViewById<TextView>(R.id.gameScheduleDateTv).setText(dateGame)
+        findViewById<TextView>(R.id.my_teams).setText("$teamName - $opponentName")
+        findViewById<ImageView>(R.id.gameScheduleTeam1Img).setImageResource(R.drawable.manchestercity)
+        findViewById<ImageView>(R.id.gameScheduleTeam2Img).setImageResource(R.drawable.arsenal)
+        findViewById<TextView>(R.id.gameScheduleTeam1Tv).setText(teamName)
+        findViewById<TextView>(R.id.gameScheduleTeam2Tv).setText(opponentName)
+        findViewById<TextView>(R.id.gameScheduleDateTv).setText(dateGame)
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)

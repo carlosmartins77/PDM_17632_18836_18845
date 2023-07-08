@@ -22,11 +22,8 @@ import com.example.myteamspage.R
 
 class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
-
     private fun createUserService(): UserService {
-        //val ipAddress = Logo_KickOff.ipAddress
-        val BASE_URL = "http://192.168.1.4:3000/"
-        //Log.d("IPADDRESSLOG", ipAddress)
+        val BASE_URL = "http://192.168.1.3:7040/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -181,7 +178,6 @@ class UserServiceFunctions {
                 if (response.isSuccessful) {
                     val countriesResponse = response.body()
                     val countries = countriesResponse?.get("message") ?: emptyList()
-
                     callback(countries.sorted())
                 } else {
                     Log.d("ErrorGetAllCountries", response.message())

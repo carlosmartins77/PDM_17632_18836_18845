@@ -30,7 +30,7 @@ class TeamsHomePage : AppCompatActivity() {
 
             binding.rvListTeamsCaptain.layoutManager = LinearLayoutManager(this)
 
-            gameServiceFunctions.listAllUserGames(this, token) { games ->
+            gameServiceFunctions.listAllUserGames(token) { games ->
                 val adapter = TeamsAdapter(games)
                 binding.rvListTeamsCaptain.adapter = adapter
             }

@@ -17,7 +17,7 @@ class ConvertDatetimeFormat {
         val outputFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
         // Remover o Hora padrao ocidental
-        val formattedInputDate = dateString.replaceFirst("\\s*\\(.*\\)$".toRegex(), "")
+            val formattedInputDate = dateString.replaceFirst("\\s*\\(.*\\)$".toRegex(), "")
 
         val date = inputFormat.parse(formattedInputDate)
         return outputFormat.format(date)

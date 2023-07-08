@@ -31,8 +31,8 @@ class TeamsAdapter(private val teams: List<Teams>) :
 
         override fun onBindViewHolder(holder: TeamsViewHolder, position: Int) {
             val currentGame = teams[position]
-            holder.team1.setImageResource(R.drawable.arsenal)
-            holder.team2.setImageResource(R.drawable.realmadrid)
+            holder.team1.setImageResource(R.drawable.manchestercity)
+            holder.team2.setImageResource(R.drawable.arsenal)
             holder.date.text = convertDatetimeFormat.convertDateFormat(currentGame.gameDateTime)
             holder.idTeam1.text = currentGame.idTeam1
             holder.idTeam2.text = currentGame.idTeam2

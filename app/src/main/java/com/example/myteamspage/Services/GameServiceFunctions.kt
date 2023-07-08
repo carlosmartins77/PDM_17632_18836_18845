@@ -22,7 +22,7 @@ class GameServiceFunctions {
     //val token = sharedPreferencesFuncs.loadData(context,"TOKEN_KEY").toString()
 
     fun createGameService(): GameService {
-        val BASE_URL = "http://192.168.1.4:7060/"
+        val BASE_URL = "http://192.168.1.3:7060/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -70,7 +70,7 @@ class GameServiceFunctions {
         })
     }
 
-    fun listAllUserGames(context: Context, token: String, callback: (List<Teams>) -> Unit) {
+    fun listAllUserGames(token: String, callback: (List<Teams>) -> Unit) {
         val service = createGameService()
         val call = service.listAllUserGames(token)
         call.enqueue(object : Callback<TeamsResponse> {

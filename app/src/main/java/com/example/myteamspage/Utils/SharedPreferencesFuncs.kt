@@ -23,7 +23,6 @@ class SharedPreferencesFuncs {
     fun loadData(context: Context, key: String): String?{
         val sharedPreferences = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val value = sharedPreferences.getString(key, null)
-
         return value
     }
 

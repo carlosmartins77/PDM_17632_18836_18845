@@ -46,9 +46,9 @@ class ScheduleGameScreen2 : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        teamServiceFunctions.getCaptainTeams(token) { teams ->
-            val adapterDate = ArrayAdapter(this, R.layout.dropdown_list_item, teams)
-            autoCompleteTeam.setAdapter(adapterDate)
+        teamServiceFunctions.getCaptainTeams(this, token) { teams ->
+            val adapterTeams = ArrayAdapter(this, R.layout.dropdown_list_item, teams)
+            autoCompleteTeam.setAdapter(adapterTeams)
 
             autoCompleteTeam.onItemClickListener = AdapterView.OnItemClickListener { AdapterView, view, i, l ->
                 val selectedItem = AdapterView.getItemAtPosition(i)
@@ -56,9 +56,9 @@ class ScheduleGameScreen2 : AppCompatActivity() {
             }
         }
 
-        teamServiceFunctions.getOpponentTeams(token) { teams ->
-            val adapterOponent = ArrayAdapter(this, R.layout.dropdown_list_item, teams)
-            autoCompleteOpponent.setAdapter(adapterOponent)
+        teamServiceFunctions.getOpponentTeams(this, token) { teams ->
+            val adapterOpponent = ArrayAdapter(this, R.layout.dropdown_list_item, teams)
+            autoCompleteOpponent.setAdapter(adapterOpponent)
 
             autoCompleteOpponent.onItemClickListener = AdapterView.OnItemClickListener { AdapterView, view, i, l ->
                 val selectedItem = AdapterView.getItemAtPosition(i)

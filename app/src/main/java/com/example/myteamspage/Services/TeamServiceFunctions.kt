@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class TeamServiceFunctions {
 
     fun createTeamService(): TeamService {
-        val BASE_URL = "http://192.168.1.4:7080/"
+        val BASE_URL = "http://192.168.1.3:7080/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -37,6 +37,7 @@ class TeamServiceFunctions {
                     val teams = teamsResponse?.get("message") ?: emptyList()
                     callback(teams.sorted())
                 } else {
+
                     Log.d("ErrorTeamsGetAllTeams", response.toString())
                 }
             }
@@ -50,7 +51,7 @@ class TeamServiceFunctions {
     }
 
 
-    fun getOpponentTeams(token: String, callback: (List<String>) -> Unit) {
+    fun getOpponentTeams(context:Context, token: String, callback: (List<String>) -> Unit) {
         val service = createTeamService()
         val call = service.getOpponentTeams(token)
 
@@ -64,6 +65,7 @@ class TeamServiceFunctions {
                     val teams = teamsResponse?.get("message") ?: emptyList()
                     callback(teams.sorted())
                 } else {
+                    Toast.makeText(context, "Error getting teams!",Toast.LENGTH_LONG).show()
                     Log.d("ErrorTeamsGetAllTeams", response.toString())
                 }
             }
@@ -76,7 +78,7 @@ class TeamServiceFunctions {
         })
     }
 
-    fun getCaptainTeams(token: String, callback: (List<String>) -> Unit) {
+    fun getCaptainTeams(context:Context, token: String, callback: (List<String>) -> Unit) {
         val service = createTeamService()
         val call = service.getCaptainTeams(token)
 
@@ -90,6 +92,7 @@ class TeamServiceFunctions {
                     val teams = teamsResponse?.get("message") ?: emptyList()
                     callback(teams.sorted())
                 } else {
+                    Toast.makeText(context, "Error getting teams!",Toast.LENGTH_LONG).show()
                     Log.d("ErrorTeamsGetCaptainTeams", response.toString())
                 }
             }
