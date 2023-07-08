@@ -10,6 +10,7 @@ import android.widget.*
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
+import com.example.myteamspage.Activities.TeamsHome.TeamsHomePage
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityPersonalInfoBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,7 +47,7 @@ class PersonalInfo : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_teams -> {
-                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    startActivity(Intent(applicationContext, TeamsHomePage::class.java))
                     finish()
                     true
                 }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.myteamspage.Activities.*
 import com.example.myteamspage.Activities.CreateAccount.SetNotifications
 import com.example.myteamspage.Activities.ScheduleGames.ScheduleGame
+import com.example.myteamspage.Activities.TeamsHome.TeamsHomePage
 import com.example.myteamspage.R
 import com.example.myteamspage.databinding.ActivityGeneralBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,7 +27,7 @@ class General : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_nav_teams -> {
-                    startActivity(Intent(applicationContext, SetNotifications::class.java))
+                    startActivity(Intent(applicationContext, TeamsHomePage::class.java))
                     finish()
                     true
                 }
@@ -36,7 +37,7 @@ class General : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_nav_publication -> {
-                    startActivity(Intent(applicationContext, MyPublication::class.java))
+                    startActivity(Intent(applicationContext, PublicationScreen::class.java))
                     finish()
                     true
                 }
