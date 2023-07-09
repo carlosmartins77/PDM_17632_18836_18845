@@ -44,19 +44,19 @@ class RegisterActivity : AppCompatActivity() {
                     email = emailTemp
                 }
                 else{
-                    Toast.makeText(applicationContext,"EMAIL INVALID!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Invalid email", Toast.LENGTH_LONG).show()
                 }
 
                 if(validateParameters.isValidPassword(passwordTemp)){
                     password = passwordTemp
                 }
                 else{
-                    Toast.makeText(applicationContext,passwordTemp, Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Invalid password", Toast.LENGTH_LONG).show()
                 }
             }
             else if(passwordTemp != confirmPassword)
             {
-                Toast.makeText(applicationContext,"PASSWORDS DONT MATCH", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext,"Password don't match", Toast.LENGTH_LONG).show()
             }
             else
             {

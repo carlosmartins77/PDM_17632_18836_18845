@@ -23,7 +23,7 @@ import com.example.myteamspage.R
 class UserServiceFunctions {
     val sharedPreferencesFuncs = SharedPreferencesFuncs()
     private fun createUserService(): UserService {
-        val BASE_URL = "http://192.168.1.3:7040/"
+        val BASE_URL = "http://192.168.1.2:7040/"
 
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -37,6 +37,7 @@ class UserServiceFunctions {
         val service = createUserService()
 
         val requestBody = mapOf(
+            "name" to fullName,
             "email" to email,
             "password" to password,
             "fullname" to fullName,
